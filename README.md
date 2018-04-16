@@ -16,8 +16,8 @@ Deze repository bevat de chatbot gemaakt voor het Nots onderzoek omtrent Convers
 ## Start de bot
 
 1. Ga met de terminal naar de locatie van de repo.
-2. Draai het volgende command: `npm start`.
+2. Draai het command `npm start *botname*` met hierbij de naam van de bot.
 3. Open de Microsoft Bot Framework Emulator.
 4. Vul de volgende 'Endpoint URL' in: http://localhost:3978/api/messages
-   - 'App ID', 'App Password' en 'Locale' velden hoeven niet ingevuld te worden 
+   - 'App ID', 'App Password' en 'Locale' velden hoeven niet ingevuld te worden
 5. Verbind en je bent klaar om te communiceren met de bot!
