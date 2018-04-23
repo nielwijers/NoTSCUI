@@ -6,7 +6,7 @@ module.exports = {
         (session,args) => {
             var pijnpunt = builder.EntityRecognizer.findEntity(args.entities,'PijnPunt');
             if (pijnpunt){ 
-              builder.Prompts.text(session, "Neem een Asperine");
+              builder.Prompts.text(session, "Neem een Aspirine");
             }
         },
     ]
