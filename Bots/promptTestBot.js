@@ -37,7 +37,7 @@ class Bot {
         session.send("We hebben nu een datum! namelijk: " + session.dialogData.date);
         session.send("De volgende promt is de 'confirm' prompt");
         session.send("Bij deze promt kan je ja of nee antwoorden");
-        builder.Prompts.confirm(session, "Gebruik je een Mac?");
+        builder.Prompts.confirm(session, "Gebruik je een Mac?", { listStyle: builder.ListStyle.button });
       },
       function (session, results) {
         session.dialogData.usingMac = results.response;
@@ -55,7 +55,7 @@ class Bot {
         }
         session.send("De volgende prompt is de 'choice' prompt");
         session.send("Deze prompt laat je een keuze maken uit meegegeven opties")
-        builder.Prompts.choice(session, "Wat is je favoriete fruit?", "Appel|Banaan|Fruit? Fruit?!?!");
+        builder.Prompts.choice(session, "Wat is je favoriete fruit?", "Appel|Banaan|Fruit? Fruit?!?!", { listStyle: builder.ListStyle.button });
       },
       function (session, results) {
         session.dialogData.favFruit = results.response.entity;
