@@ -23,7 +23,7 @@ class Bot {
         this.bot.dialog('/', [
           function (session) {
             session.send("Wekom bij de demo van de rich cards!")
-            builder.Prompts.choice(session, "Kies een card", "AdaptiveCard|AnimationCard|AudioCard|HeroCard|ThumbnailCard|ReceiptCard|SignInCard|VideoCard", { listStyle: builder.ListStyle.button });
+            builder.Prompts.choice(session, "Kies een card", "AdaptiveCard|AnimationCard2|AnimationCard|AudioCard|HeroCard|ThumbnailCard|ReceiptCard|SignInCard|VideoCard", { listStyle: builder.ListStyle.button });
           },
           function (session, results) {
             session.beginDialog(results.response.entity);
@@ -133,6 +133,17 @@ class Bot {
                   text: "Deze card speelt gifjes of korte filmpjes"
                 }
               }]
+            });
+            session.endDialog();
+          }
+        ]);
+
+        this.bot.dialog("AnimationCard2", [
+          function (session) {
+            session.send("Welkom bij de AnimationCard2");
+            session.send({
+              text: "Dit is een voorbeeld van een animation card:",
+              attachments: [getAnimationCard(session).data]
             });
             session.endDialog();
           }
@@ -293,6 +304,14 @@ class Bot {
           }
         ]);
     }
+}
+
+function getAnimationCard(session) {
+  return new builder.AnimationCard(session)
+    .text("Deze card speelt gifjes of korte filmpjes")
+    .media([
+      { url: "https://media.giphy.com/media/Vuw9m5wXviFIQ/giphy.gif" }
+    ]);
 }
 
 module.exports.Bot = Bot;
