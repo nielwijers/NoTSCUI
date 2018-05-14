@@ -12,7 +12,7 @@ if (typeof(BOTNAME) == 'undefined') {
 try {
   Bot = require('./Bots/' + BOTNAME + '.js');
 } catch (e) {
-  throw new Error(UNKNOWN_BOT_ERROR);
+  throw new Error(e);
 }
 
 var server = express();

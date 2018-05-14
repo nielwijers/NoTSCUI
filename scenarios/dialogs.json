@@ -1,0 +1,9 @@
+{
+	"dialogs": [
+		{
+			"path": "/hoofdpijn",
+			"intent": "Hoofdpijn",
+			"scenario": "hoofdpijn"
+		}
+	]
+}
