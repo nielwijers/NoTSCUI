@@ -12,11 +12,17 @@ class Bot {
             appPassword: process.env.MicrosoftAppPassword
         });
 
-        this.bot = new builder.UniversalBot(this.connector);
+        this.bot = new builder.UniversalBot(this.connector, [
+            session => {
+                session.send(FALLBACK_ANSWER);
+            }
+        ]);
 
         this.intents = new builder.IntentDialog({
             recognizers: [new apiairecognizer("54ae2c103dcd42b5b65c4d4cd120ed25")]
         });
+        
+        //this.bot.recognizer(new apiairecognizer("54ae2c103dcd42b5b65c4d4cd120ed25"));
     }
 
     getConnector() {
@@ -24,18 +30,25 @@ class Bot {
     }
 
     init() {
-        this.bot.dialog('/', this.intents);
+        this.bot.dialog('/hoi', this.intents);
 
         fs.readdir('./Dialogs', (err, files) => {
             files.forEach(file => {
               const dialog = require('../Dialogs/' + file);
-              this.intents.matches(dialog.intentName, dialog.dialogSteps);
+              this.bot.dialog(dialog.name, dialog.steps);
             });
         })
 
-        this.intents.onDefault(session => {
-            session.send(FALLBACK_ANSWER);
-        });
+        this.bot.on('conversationUpdate', message => {
+            if (message.membersAdded) {
+                 message.membersAdded.forEach(identity => {
+                     if (identity.id === message.address.bot.id) {
+                        let intents = this.intents;
+                        this.bot.beginDialog(message.address, 'initialDialog', intents);
+                     }
+                 });
+             }
+         });
     }
 }
 
