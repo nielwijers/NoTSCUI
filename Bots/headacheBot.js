@@ -21,7 +21,7 @@ class Bot {
         this.intents = new builder.IntentDialog({
             recognizers: [new apiairecognizer("54ae2c103dcd42b5b65c4d4cd120ed25")]
         });
-        
+
         //this.bot.recognizer(new apiairecognizer("54ae2c103dcd42b5b65c4d4cd120ed25"));
     }
 
@@ -34,7 +34,7 @@ class Bot {
 
         fs.readdir('./Dialogs', (err, files) => {
             files.forEach(file => {
-              const dialog = require('../Dialogs/' + file);
+              const dialog = require('../Dialogs/' + file)(this.intents);
               this.bot.dialog(dialog.name, dialog.steps);
             });
         })
