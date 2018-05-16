@@ -12,9 +12,9 @@ module.exports = {
           builder.Prompts.text(session, 'Zou U de hoofdpijn kunnen beschrijven?');
         },
         (session, args, next) => {
-            console.log(intents.recognize(args.response, (v) => {
-                return v;
-            }));
+            intents.recognize(session, (nullValue, entities) => {
+                console.log(entities);
+            });
             session.endDialog();
         }
     ]
