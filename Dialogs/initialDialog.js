@@ -10,9 +10,9 @@ module.exports = function (intents) {
                 builder.Prompts.text(session, 'Zou U de hoofdpijn kunnen beschrijven?');
             },
             (session, args, next) => {
-                let entities = helpers.answerQuestionsWithEntities(session, intents);
+                //let entities = helpers.answerQuestionsWithEntities(session, intents);
 
-                session.beginDialog('');
+                session.beginDialog('GlobalQuestionsDialog');
             }
         ]
     }

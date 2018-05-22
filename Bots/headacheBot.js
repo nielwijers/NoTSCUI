@@ -28,7 +28,7 @@ class Bot {
     }
 
     init() {
-        this.bot.dialog('/', this.intents);
+        this.bot.dialog('start', this.intents);
 
         fs.readdir('./Dialogs', (err, files) => {
             files.forEach(file => {
@@ -42,7 +42,10 @@ class Bot {
                  message.membersAdded.forEach(identity => {
                      if (identity.id === message.address.bot.id) {
                         let intents = this.intents;
+                        this.bot.set(`persistData`, false);
                         this.bot.beginDialog(message.address, 'initialDialog', intents);
+                        this.bot.beginDialogAction('StopAction', 'StopDialog', { matches: /^stop$/i });
+                        this.bot.beginDialogAction('HelpAction', 'HelpDialog', { matches: /^help$/i });
                      }
                  });
              }
