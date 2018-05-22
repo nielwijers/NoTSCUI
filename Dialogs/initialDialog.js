@@ -10,9 +10,10 @@ module.exports = function (intents) {
                 builder.Prompts.text(session, 'Zou U de hoofdpijn kunnen beschrijven?');
             },
             (session, args, next) => {
-                //let entities = helpers.answerQuestionsWithEntities(session, intents);
-
-                session.beginDialog('GlobalQuestionsDialog');
+                // wacht 2 seconden
+                helpers.answerQuestionsWithEntities(session, intents, converationData => 
+                // if typing: wacht op bericht of wacht tot typen klaar is en wacht 2 seconden.
+                    session.beginDialog('GlobalQuestionsDialog', converationData));
             }
         ]
     }

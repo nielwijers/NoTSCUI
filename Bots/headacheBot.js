@@ -28,7 +28,7 @@ class Bot {
     }
 
     init() {
-        this.bot.dialog('start', this.intents);
+        this.bot.dialog('/start', this.intents);
 
         fs.readdir('./Dialogs', (err, files) => {
             files.forEach(file => {

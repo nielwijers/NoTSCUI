@@ -1,0 +1,161 @@
+{
+    "Spanningshoofdpijn": {
+        "Geslacht": [
+            "Man",
+            "Vrouw"
+        ],
+        "PijnZeide": [
+            "Beide"
+        ],
+        "pijnPunt": [
+            "Slaap",
+            "Voorhoofd"
+        ],
+        "PijnSoort": [
+            "Drukkend",
+            "Dof"
+        ],
+        "Hevigheid": [
+            1,
+            2
+        ],
+        "Aanwezigheid": [
+            "Wisselend"
+        ],
+        "Kenmerken": [
+            "Pijnlijke, stijve en gespannen nek",
+            "Pijnlijke, stijve en gespannen schouders",
+            "Misselijkheid bij toenemende hoofdpijn (niet overgeven)",
+            "Depressiviteit als gevolg"
+        ],
+        "Advies": {"Matig": "Ontspannen( Goed slapen, regelmatig strekoefeningen, massage), Paracetamol, Ibuprofen"}
+    },
+    "Clusterhoofdpijn": {
+        "Geslacht": [
+            "Man",
+            "Vrouw"
+        ],
+        "PijnZeide": [
+            "Links",
+            "Rechts"
+        ],
+        "pijnPunt": [
+            "Slaap",
+            "Voorhoofd",
+            "Achter het oog"
+        ],
+        "PijnSoort": [
+            "Snijdend",
+            "Bonzend"
+        ],
+        "Hevigheid": [
+            3,
+            4
+        ],
+        "Aanwezigheid": [
+            "Wisselend"
+        ],
+        "Kenmerken": [
+            "Rood doorlopen oog aan de zijde waar de hoofdpijn zit",
+            "Tranend oog aan de zijde waar de hoofdpijn zit",
+            "Hangend of gezwollen ooglid aan de zijde waar de hoofdpijn zit",
+            "Vernauwde pupil aan de zijde waar de hoofdpijn zit",
+            "Loopneus aan de zijde waar de hoofdpijn zit",
+            "Zweten op het voorhoofd",
+            "Depressiviteit als gevolg"
+        ],
+        "Advies": {
+            "Matig": "",
+            "Ernstig": "Neem contact met de huisarts"
+        }
+    },
+    "Migraine": {
+        "Geslacht": [
+            "Man",
+            "Vrouw"
+        ],
+        "PijnZeide": [
+            "Links",
+            "Rechts"
+        ],
+        "pijnPunt": [
+            "Slaap",
+            "Voorhoofd",
+            "Achter het oog",
+            "Achter in het hoofd"
+        ],
+        "PijnSoort": [
+            "Kloppend",
+            "Bonzend"
+        ],
+        "Hevigheid": [
+            3,
+            4
+        ],
+        "Aanwezigheid": [
+            "Continu"
+        ],
+        "Kenmerken": [
+            "Misselijkheid en/of braken",
+            "Overgevoelig voor licht en/of geluid",
+            "Tijdens een aanval wordt de pijn erger bij lichamelijke inspanning",
+            "Het zien van lichtflitsen,vlekken of sterretjes",
+            "Gevoel van krachtverlies"
+        ],
+        "Advies": {
+            "Matig": "Pijnstillers, Middel tegen misselijkheid, op donkere en rustige plekken uitrusten",
+            "Ernstig": "Neem contact met de huisarts"
+        }
+    },
+    "Hormonale hoofdpijn": {
+        "Geslacht": [
+            "Vrouw"
+        ],
+        "PijnZeide": [
+            "Beide"
+        ],
+        "pijnPunt": [
+            "Slaap",
+            "Voorhoofd",
+            "Achter het oog",
+            "Achter in het hoofd"
+        ],
+        "PijnSoort": [
+            "Drukkend",
+            "Zeurend"
+        ],
+        "Hevigheid": [
+            1,
+            2
+        ],
+        "Aanwezigheid": [
+            "Wisselend"
+        ],
+        "Kenmerken": [
+            "Acné",
+            "Depressiviteit",
+            "Dwangmatig eten",
+            "Duizelingen",
+            "Gespannenheid, irritatie",
+            "Gewichtstoename",
+            "Gezwollen en/of pijnlijke borsten",
+            "Huiduitslag (vlekjes)",
+            "Kramp in de buik",
+            "Opgeblazen buik",
+            "Pijn in de rug",
+            "Vermoeidheid",
+            "Wisselende stemmingen"
+        ],
+        "Advies": {
+            "Matig": "Pijnstillers die in de groep NSAID’s vallen"
+        }
+    },
+    "entities": [
+        "Geslacht",
+        "PijnZeide",
+        "pijnPunt",
+        "PijnSoort",
+        "Hevigheid",
+        "Aanwezigheid"
+    ]
+}
