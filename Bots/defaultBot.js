@@ -28,7 +28,7 @@ class Bot {
 
         fs.readdir('./Dialogs', (err, files) => {
             files.forEach(file => {
-              const dialog = require('../Dialogs/' + file);
+              let dialog = require('../Dialogs/' + file);
               this.intents.matches(dialog.intentName, dialog.dialogSteps);
             });
         })
