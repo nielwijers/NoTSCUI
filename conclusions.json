@@ -7,7 +7,7 @@
         "PijnZeide": [
             "Beide"
         ],
-        "pijnPunt": [
+        "PijnPunt": [
             "Slaap",
             "Voorhoofd"
         ],
@@ -28,7 +28,9 @@
             "Misselijkheid bij toenemende hoofdpijn (niet overgeven)",
             "Depressiviteit als gevolg"
         ],
-        "Advies": {"Matig": "Ontspannen( Goed slapen, regelmatig strekoefeningen, massage), Paracetamol, Ibuprofen"}
+        "Advies": {
+            "Matig": "Ontspannen( Goed slapen, regelmatig strekoefeningen, massage), Paracetamol, Ibuprofen"
+        }
     },
     "Clusterhoofdpijn": {
         "Geslacht": [
@@ -39,7 +41,7 @@
             "Links",
             "Rechts"
         ],
-        "pijnPunt": [
+        "PijnPunt": [
             "Slaap",
             "Voorhoofd",
             "Achter het oog"
@@ -78,7 +80,7 @@
             "Links",
             "Rechts"
         ],
-        "pijnPunt": [
+        "PijnPunt": [
             "Slaap",
             "Voorhoofd",
             "Achter het oog",
@@ -114,7 +116,7 @@
         "PijnZeide": [
             "Beide"
         ],
-        "pijnPunt": [
+        "PijnPunt": [
             "Slaap",
             "Voorhoofd",
             "Achter het oog",

@@ -1,27 +1,19 @@
 const builder = require('botbuilder');
 const helpers = require('../helpers');
 
-let characteristics;
-
-//TODO: remove after data from helpers
-characteristics = {
-    Migraine: [
-        'test',
-        'test2',
-        'test3'
-    ]
-}
-
 module.exports = function (intents) {
     return {
         name: "CharacteristicsDialog",
         steps: [
             (session, args) => {
-                let conclusion = args.type;
-                let msg = 'Hoeveel van de onderstaande kenmerken komen bij u voor? (cijfer tussen 0 en ' + characteristics[conclusion].length + ') \n'
+                //TODO: show a few characteristics and check if they have them yes or no
 
-                for (let i = 0; i < characteristics[conclusion].length; i++) {
-                    msg += '- ' + characteristics[conclusion][i] + '\n';
+                let conclusion = args.type;
+                let characteristics = helpers.getCharacteristics(conclusion);
+                let msg = 'Hoeveel van de onderstaande kenmerken komen bij u voor? (cijfer tussen 0 en ' + characteristics.length + ') \n'
+
+                for (let i = 0; i < characteristics.length; i++) {
+                    msg += '- ' + characteristics[i] + '\n';
                 }
                 builder.Prompts.number(session, msg);
             },

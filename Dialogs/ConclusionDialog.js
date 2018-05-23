@@ -1,22 +1,19 @@
 const builder = require('botbuilder');
 const helpers = require('../helpers');
 
-let conclusion;
-
-//TODO: remove after helpers
-//Ik ga er vanuit dat altijd een conclusie wordt gegeven, ook al is die niet final (aka nooit null)
-conclusion = { type: 'Migraine', final: true, intense: true };
+let cData;
 
 module.exports = function (intents) {
     return {
         name: "ConclusionDialog",
         steps: [
             (session, args) => {
-                //TODO: get conlusion from helpers
-                //let conlusion = helpers.getConclusion();
+                cData = args;
+
+                let conclusion = helpers.getConslusion(cData);
 
                 if (conclusion.final) {
-                    if (conclusion.intense) {
+                    if (conclusion.variableIntensity) {
                         session.send('Het lijkt erop dat u ' + conclusion.type + ' heeft.');
                         session.beginDialog('IntensityDialog');
                     } else {

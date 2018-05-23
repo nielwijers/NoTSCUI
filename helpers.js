@@ -18,38 +18,42 @@ let answerQuestionsWithEntities = (session, intents, cb) => {
                 }
             }
             console.log(characteristics);
-            saveConversationData(session, {characteristics: characteristics});
-            cb({characteristics: characteristics});
+            saveConversationData(session, {characteristics: characteristics}, cb);
         }
     });
 }
 
-let saveConversationData = (session, conversationData) => {
+let saveConversationData = (session, conversationData, cb) => {
     fs.readdir('./ConversationData', (error, files) => {
         let cData = conversationData;
         if (files != undefined && session.message.address.conversation.id+'.json' in files) {
             fs.readFile('./ConversationData/'+session.message.address.conversation.id+'.json', (error, content) => {
                 try {
                     let data = JSON.parse(content);
-                    let cData = {...data, ...conversationData};
+                    let cData = Object.assign(data, converationData)
                     fs.writeFile('./ConversationData/'+session.message.address.conversation.id+'.json',
                     JSON.stringify(merged), 'utf8', (error) => {
-                        console.log(error);
+                        if (error) {
+                            console.log(error);
+                        }
+                        cb(cData);
                     })
                 }
                 catch(e) {
                     console.log(e);
+                    cb(cData);
                 }
             });
         }
-        else {                    
-            fs.writeFile('./ConversationData/'+session.message.address.conversation.id+'.json', 
+        else {
+            fs.writeFile('./ConversationData/'+session.message.address.conversation.id+'.json',
                 JSON.stringify(conversationData), 'utf8', (error) => {
-                console.log(error);
+                if (error) {
+                    console.log(error);
+                }
+                cb(cData);
             });
-        } 
-
-        return cData;
+        }
     });
 }
 
@@ -69,34 +73,55 @@ let getConversationData = (session) => {
 }
 
 let questionAnswered = (entity, cData) => {
-    return entity in Object.keys(cData.characteristics.keys) 
+    return Object.keys(cData.characteristics).has(entity)
         && cData.characteristics[entity] != null
         && cData.characteristics[entity] != '';
 }
 
-let hasConslution = cData => {
+let getAdvice = type => {
+    return conclusions[type].Advies;
+}
+
+let getCharacteristics = type => {
+    return conclusions[type].Kenmerken;
+}
+
+let getConslusion = cData => {
     possibilities = [];
 
+
     for (let c = 0; c < Object.keys(conclusions).length -1; c++) {
-        possibilities[c] = {name: Object.keys(conclusions)[c], score: 0} 
+        possibilities[c] = {name: Object.keys(conclusions)[c], score: 0}
         for (let s = 0; s < Object.keys(cData.characteristics).length; s++) {
             let sKey = Object.keys(cData.characteristics)[s];
+            if (conclusions[possibilities[c].name][sKey] == undefined) {
+                console.log(possibilities[c].name, sKey);
+            }
             if (cData.characteristics[sKey] != null && conclusions[possibilities[c].name][sKey].has(cData.characteristics[sKey])) {
                 possibilities[c].score += 1;
             }
         }
     }
-    
+
     possibilities.sort((a,b) => (a.score < b.score) ? 1 : ((b.score > a.score) ? -1 : 0) );
 
-    if (possibilities[0] - possibilities[1] > 2) return possibilities[0].name;
-    return null;
+    let vi = Object.keys(getAdvice(possibilities[0].name)).length > 1;
+
+    conclusion = {
+        type: possibilities[0].name,
+        final: possibilities[0] - possibilities[1] > 2,
+        variableIntensity: vi
+    }
+
+    return conclusion;
 }
 
 module.exports = {
     answerQuestionsWithEntities,
     saveConversationData,
     getConversationData,
+    getCharacteristics,
     questionAnswered,
-    hasConslution,
+    getConslusion,
+    getAdvice,
 }

@@ -11,7 +11,7 @@ module.exports = function (intents) {
             },
             (session, args, next) => {
                 // wacht 2 seconden
-                helpers.answerQuestionsWithEntities(session, intents, converationData => 
+                helpers.answerQuestionsWithEntities(session, intents, converationData =>
                 // if typing: wacht op bericht of wacht tot typen klaar is en wacht 2 seconden.
                     session.beginDialog('GlobalQuestionsDialog', converationData));
             }
