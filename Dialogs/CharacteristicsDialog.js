@@ -1,26 +1,54 @@
 const builder = require('botbuilder');
 const helpers = require('../helpers');
 
+let data;
+let characteristics;
+
 module.exports = function (intents) {
     return {
         name: "CharacteristicsDialog",
         steps: [
-            (session, args) => {
-                //TODO: show a few characteristics and check if they have them yes or no
+            (session, args, next) => {
+                data = args;
 
-                let conclusion = args.type;
-                let characteristics = helpers.getCharacteristics(conclusion);
-                let msg = 'Hoeveel van de onderstaande kenmerken komen bij u voor? (cijfer tussen 0 en ' + characteristics.length + ') \n'
+                if (data.cData.characteristics.Kenmerken == undefined) data.cData.characteristics.Kenmerken = [];
+                if (data.cData.askedCharacteristics == undefined) data.cData.askedCharacteristics = [];
 
-                for (let i = 0; i < characteristics.length; i++) {
-                    msg += '- ' + characteristics[i] + '\n';
+                characteristics = helpers.getCharacteristics(data.possibilities, data.cData);
+
+                if (characteristics == null) {
+                    next();
                 }
-                builder.Prompts.number(session, msg);
+
+                let msg = 'Heeft u last van ' + characteristics[0] + '?';
+                builder.Prompts.confirm(session, msg);
             },
             (session, args, next) => {
-                //TODO: update helpers with found information
+                if (args.response != undefined) {
+                    if (args.response) {
+                        data.cData.characteristics.Kenmerken.push(characteristics[0]);
+                    } else {
+                        data.cData.askedCharacteristics.push(characteristics[0]);
+                    }
+                }
 
-                session.beginDialog('ConclusionDialog');
+                if (characteristics == null || characteristics.length > 1) {
+                    let msg = 'Heeft u last van ' + characteristics[1] + '?';
+                    builder.Prompts.confirm(session, msg);
+                } else {
+                    next();
+                }
+            },
+            (session, args, next) => {
+                if (args.response != undefined) {
+                    if (args.response) {
+                        data.cData.characteristics.Kenmerken.push(characteristics[1]);
+                    } else {
+                        data.cData.askedCharacteristics.push(characteristics[1]);
+                    }
+                }
+
+                session.beginDialog('ConclusionDialog', data.cData);
             }
         ]
     }

@@ -4,7 +4,7 @@
             "Man",
             "Vrouw"
         ],
-        "PijnZeide": [
+        "PijnZijde": [
             "Beide"
         ],
         "PijnPunt": [
@@ -37,7 +37,7 @@
             "Man",
             "Vrouw"
         ],
-        "PijnZeide": [
+        "PijnZijde": [
             "Links",
             "Rechts"
         ],
@@ -76,7 +76,7 @@
             "Man",
             "Vrouw"
         ],
-        "PijnZeide": [
+        "PijnZijde": [
             "Links",
             "Rechts"
         ],
@@ -113,7 +113,7 @@
         "Geslacht": [
             "Vrouw"
         ],
-        "PijnZeide": [
+        "PijnZijde": [
             "Beide"
         ],
         "PijnPunt": [

@@ -21,17 +21,15 @@ module.exports = function (intents) {
                     cData.characteristics.Geslacht = args.response.entity;
                 }
 
-                console.log(helpers.questionAnswered('PijnZeide', cData));
-
-                if (!helpers.questionAnswered('PijnZeide', cData)) {
-                    builder.Prompts.choice(session, "Aan welke zeide heeft u hoofdpijn?", "Links|Rechts|Beide", { listStyle: builder.ListStyle.button });
+                if (!helpers.questionAnswered('PijnZijde', cData)) {
+                    builder.Prompts.choice(session, "Aan welke zijde heeft u hoofdpijn?", "Links|Rechts|Beide", { listStyle: builder.ListStyle.button });
                 } else {
                     next();
                 }
             },
             (session, args, next) => {
                 if (args.response != undefined) {
-                    cData.characteristics.PijnZeide = args.response.entity;
+                    cData.characteristics.PijnZijde = args.response.entity;
                 }
 
                 if (!helpers.questionAnswered('PijnPunt', cData)) {

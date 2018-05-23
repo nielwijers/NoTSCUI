@@ -13,15 +13,16 @@ module.exports = function (intents) {
                 let conclusion = helpers.getConslusion(cData);
 
                 if (conclusion.final) {
-                    if (conclusion.variableIntensity) {
-                        session.send('Het lijkt erop dat u ' + conclusion.type + ' heeft.');
-                        session.beginDialog('IntensityDialog');
+                    if (helpers.hasVariableIntensity(conclusion.possibilities[0].name)) {
+                        session.beginDialog('IntensityDialog', cData);
                     } else {
                         session.beginDialog('AdviceDialog');
                     }
                 } else {
-                    session.send('Het is nog niet helemaal duidelijk, al lijkt het in de richting van ' + conclusion.type + ' te gaan.');
-                    session.beginDialog('CharacteristicsDialog', conclusion);
+                    session.beginDialog('CharacteristicsDialog', {
+                        possibilities: conclusion.possibilities,
+                        cData: cData
+                    });
                 }
             }
         ]

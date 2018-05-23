@@ -1,45 +1,31 @@
 const builder = require('botbuilder');
 const helpers = require('../helpers');
 
-let data;
-
-//TODO: remove after data is gotten by helpers
-data = {
-    PijnIntensiteit: null,
-    Opkomst: null,
-    Frequentie: null
-}
+let cData;
 
 module.exports = function (intents) {
     return {
         name: "IntensityDialog",
         steps: [
             (session, args, next) => {
-                //TODO: get information from helpers
+                cData = args;
 
-                if (data.PijnIntensiteit == null) {
-                    builder.Prompts.choice(session, "Hoe intens is de hoofdpijn?", "Mild|Aanwezig|Heftig|Intens", { listStyle: builder.ListStyle.button });
+                if (!helpers.questionAnswered('Hevigheid', cData)) {
+                    builder.Prompts.choice(session, "Hoe intens is de hoofdpijn?", "1: Mild|2: Aanwezig|3: Heftig|4: Intens", { listStyle: builder.ListStyle.button });
                 } else {
                     next();
                 }
             },
-            (session, args, next) => {
+            (session, args) => {
                 if (args.response != undefined) {
-                    data.PijnIntensiteit = args.response.entity;
+                    cData.Hevigheid = args.response.entity[0];
                 }
 
-                if (data.Opkomst == null) {
-                    builder.Prompts.time(session, "Wanneer is de hoofdpijn begonnen?");
-                } else {
-                    next();
-                }
+                builder.Prompts.time(session, "Wanneer is de hoofdpijn begonnen?");
             },
             (session, args, next) => {
-                if (args.response != undefined) {
-                    data.Opkomst = args.response.entity;
-                }
 
-                if (data.Frequentie == null) {
+                if (!helpers.questionAnswered('Aanwezigheid', cData)) {
                     builder.Prompts.choice(session, "Met welke frequentie komt de hoofdpijn naar boven?", "Wisselend|Continu", { listStyle: builder.ListStyle.button });
                 } else {
                     next();
@@ -47,12 +33,10 @@ module.exports = function (intents) {
             },
             (session, args) => {
                 if (args.response != undefined) {
-                    data.Frequentie = args.response.entity;
+                    cData.Aanwezigheid = args.response.entity;
                 }
 
-                //TODO: send data to helpers
-
-                session.beginDialog('AdviceDialog');
+                session.beginDialog('AdviceDialog', cData);
             }
         ]
     }

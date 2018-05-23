@@ -82,42 +82,74 @@ let getAdvice = type => {
     return conclusions[type].Advies;
 }
 
-let getCharacteristics = type => {
-    return conclusions[type].Kenmerken;
+let getCharacteristics = (possibilities, cData, index = 0) => {
+    if (index >= possibilities.length - 1) {
+        return null;
+    }
+    let characteristics = conclusions[possibilities[index].name].Kenmerken.slice();
+    let indexesToRemove = [];
+    if (cData.characteristics.Kenmerken != undefined) {
+        for (let i = 0; i < characteristics.length; i++) {
+            if (cData.characteristics.Kenmerken.has(characteristics[i]) || cData.askedCharacteristics.has(characteristics[i])) {
+                indexesToRemove.push(i);
+            }
+        }
+        for (let i = indexesToRemove.length-1; i > -1; i--) {
+            characteristics.splice(indexesToRemove[i], 1);
+        }
+    }
+
+    if (characteristics.length < 1) {
+        getCharacteristics(possibilities, cData, index + 1);
+    }
+
+    return characteristics;
+}
+
+let hasVariableIntensity = type => {
+    return Object.keys(getAdvice(type)).length > 1;
 }
 
 let getConslusion = cData => {
     possibilities = [];
 
+    console.log(cData);
 
     for (let c = 0; c < Object.keys(conclusions).length -1; c++) {
         possibilities[c] = {name: Object.keys(conclusions)[c], score: 0}
         for (let s = 0; s < Object.keys(cData.characteristics).length; s++) {
             let sKey = Object.keys(cData.characteristics)[s];
-            if (conclusions[possibilities[c].name][sKey] == undefined) {
-                console.log(possibilities[c].name, sKey);
-            }
-            if (cData.characteristics[sKey] != null && conclusions[possibilities[c].name][sKey].has(cData.characteristics[sKey])) {
-                possibilities[c].score += 1;
+
+            if (cData.characteristics[sKey].constructor === Array) {
+                let characteristicsArray = cData.characteristics[sKey];
+                for (let a = 0; a < characteristicsArray.length; a++) {
+                    if (conclusions[possibilities[c].name][sKey].has(characteristicsArray[a])) {
+                        possibilities[c].score += 1;
+                    }
+                }
+            } else {
+                if (cData.characteristics[sKey] != null && conclusions[possibilities[c].name][sKey].has(cData.characteristics[sKey])) {
+                    possibilities[c].score += 1;
+                }
             }
         }
     }
 
     possibilities.sort((a,b) => (a.score < b.score) ? 1 : ((b.score > a.score) ? -1 : 0) );
 
-    let vi = Object.keys(getAdvice(possibilities[0].name)).length > 1;
-
-    conclusion = {
-        type: possibilities[0].name,
-        final: possibilities[0] - possibilities[1] > 2,
-        variableIntensity: vi
+    data = {
+        possibilities: possibilities,
+        final: possibilities[0].score - possibilities[1].score > 2,
     }
 
-    return conclusion;
+    console.log(data);
+
+    return data;
 }
 
 module.exports = {
     answerQuestionsWithEntities,
+    hasVariableIntensity,
     saveConversationData,
     getConversationData,
     getCharacteristics,
