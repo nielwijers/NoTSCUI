@@ -21,6 +21,7 @@ module.exports = function (intents) {
                     cData.Hevigheid = args.response.entity[0];
                 }
 
+                // Waarom wordt deze vraag eigenlijk gesteld? Dit heeft geen toegevoegde waarde...
                 builder.Prompts.time(session, "Wanneer is de hoofdpijn begonnen?");
             },
             (session, args, next) => {

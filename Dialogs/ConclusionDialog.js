@@ -16,7 +16,7 @@ module.exports = function (intents) {
                     if (helpers.hasVariableIntensity(conclusion.possibilities[0].name)) {
                         session.beginDialog('IntensityDialog', cData);
                     } else {
-                        session.beginDialog('AdviceDialog');
+                        session.beginDialog('AdviceDialog', cData);
                     }
                 } else {
                     session.beginDialog('CharacteristicsDialog', {
