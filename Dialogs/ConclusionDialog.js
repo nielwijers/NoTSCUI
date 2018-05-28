@@ -6,8 +6,8 @@ let possibilitiesIndex = 0;
 let characteristicsIndex = 0;
 
 /**
- * ConclusionDialog will checks if the final conclusion is known.
- * @param {object} intents 
+ * ConclusionDialog checks if the final conclusion is known.
+ * @param {object} intents
  */
 module.exports = function (intents) {
     return {

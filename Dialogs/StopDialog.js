@@ -10,10 +10,10 @@ module.exports = function (intents) {
             },
             (session, args, next) => {
                 if (args.response) {
-                    // TODO: fix this mess so it starts the previous dialog over
-                    let previousDialog = session.dialogStack()[0].id.split(':')[1];
-                    session.pruneDialogStack(session.dialogStack());
-                    session.beginDialog(previousDialog);
+                    helpers.deleteUserData(session, () => {
+                        session.endConversation();
+                        session.beginDialog('initialDialog');
+                    });
                 } else {
                     session.endDialog();
                 }

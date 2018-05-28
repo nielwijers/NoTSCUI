@@ -6,7 +6,7 @@ let characteristics;
 
 /**
  * Will ask if the user recognizes the given symptom.
- * @param {object} intents 
+ * @param {object} intents
  */
 module.exports = function (intents) {
     return {
@@ -36,7 +36,7 @@ module.exports = function (intents) {
                     }
                 }
 
-                if (characteristics == null || characteristics.length > 1) {
+                if (characteristics != null && characteristics.length > 1) {
                     let msg = 'Heeft u last van ' + characteristics[1] + '?';
                     builder.Prompts.confirm(session, msg);
                 } else {
