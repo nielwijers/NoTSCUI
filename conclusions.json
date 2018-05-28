@@ -23,10 +23,10 @@
             "Wisselend"
         ],
         "Kenmerken": [
-            "Pijnlijke, stijve en gespannen nek",
-            "Pijnlijke, stijve en gespannen schouders",
-            "Misselijkheid bij toenemende hoofdpijn (niet overgeven)",
-            "Depressiviteit als gevolg"
+            "pijnlijke, stijve en gespannen nek",
+            "pijnlijke, stijve en gespannen schouders",
+            "misselijkheid bij toenemende hoofdpijn (niet overgeven)",
+            "depressiviteit als gevolg"
         ],
         "Advies": {
             "Matig": "Ontspannen( Goed slapen, regelmatig strekoefeningen, massage), Paracetamol, Ibuprofen"
@@ -58,17 +58,17 @@
             "Wisselend"
         ],
         "Kenmerken": [
-            "Rood doorlopen oog aan de zijde waar de hoofdpijn zit",
-            "Tranend oog aan de zijde waar de hoofdpijn zit",
-            "Hangend of gezwollen ooglid aan de zijde waar de hoofdpijn zit",
-            "Vernauwde pupil aan de zijde waar de hoofdpijn zit",
-            "Loopneus aan de zijde waar de hoofdpijn zit",
-            "Zweten op het voorhoofd",
-            "Depressiviteit als gevolg"
+            "rood doorlopen oog aan de zijde waar de hoofdpijn zit",
+            "tranend oog aan de zijde waar de hoofdpijn zit",
+            "hangend of gezwollen ooglid aan de zijde waar de hoofdpijn zit",
+            "vernauwde pupil aan de zijde waar de hoofdpijn zit",
+            "loopneus aan de zijde waar de hoofdpijn zit",
+            "zweten op het voorhoofd",
+            "depressiviteit als gevolg"
         ],
         "Advies": {
-            "Matig": "",
-            "Ernstig": "Neem contact met de huisarts"
+            "Matig": "?",
+            "Ernstig": "Neem contact op met de huisarts"
         }
     },
     "Migraine": {
@@ -98,11 +98,11 @@
             "Continu"
         ],
         "Kenmerken": [
-            "Misselijkheid en/of braken",
-            "Overgevoelig voor licht en/of geluid",
-            "Tijdens een aanval wordt de pijn erger bij lichamelijke inspanning",
-            "Het zien van lichtflitsen,vlekken of sterretjes",
-            "Gevoel van krachtverlies"
+            "misselijkheid en/of braken",
+            "overgevoelig voor licht en/of geluid",
+            "tijdens een aanval wordt de pijn erger bij lichamelijke inspanning",
+            "het zien van lichtflitsen,vlekken of sterretjes",
+            "gevoel van krachtverlies"
         ],
         "Advies": {
             "Matig": "Pijnstillers, Middel tegen misselijkheid, op donkere en rustige plekken uitrusten",
@@ -134,19 +134,19 @@
             "Wisselend"
         ],
         "Kenmerken": [
-            "Acné",
-            "Depressiviteit",
-            "Dwangmatig eten",
-            "Duizelingen",
-            "Gespannenheid, irritatie",
-            "Gewichtstoename",
-            "Gezwollen en/of pijnlijke borsten",
-            "Huiduitslag (vlekjes)",
-            "Kramp in de buik",
-            "Opgeblazen buik",
-            "Pijn in de rug",
-            "Vermoeidheid",
-            "Wisselende stemmingen"
+            "acné",
+            "depressiviteit",
+            "dwangmatig eten",
+            "duizelingen",
+            "gespannenheid, irritatie",
+            "gewichtstoename",
+            "gezwollen en/of pijnlijke borsten",
+            "huiduitslag (vlekjes)",
+            "kramp in de buik",
+            "opgeblazen buik",
+            "pijn in de rug",
+            "vermoeidheid",
+            "wisselende stemmingen"
         ],
         "Advies": {
             "Matig": "Pijnstillers die in de groep NSAID’s vallen"

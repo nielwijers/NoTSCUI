@@ -5,7 +5,7 @@ let cData;
 
 /**
  * Gives advice of the conclusion to the user.
- * @param {object} intents 
+ * @param {object} intents
  */
 module.exports = function (intents) {
     return {

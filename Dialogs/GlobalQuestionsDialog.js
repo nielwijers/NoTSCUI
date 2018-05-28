@@ -5,7 +5,7 @@ let cData;
 
 /**
  * The GlobalQuestionsDialog will ask common question if these are not already answered.
- * @param {object} intents 
+ * @param {object} intents
  */
 module.exports = function (intents) {
     return {

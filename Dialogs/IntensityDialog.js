@@ -5,7 +5,7 @@ let cData;
 
 /**
  * Checks ith the user if the symptoms are intens or not.
- * @param {object} intents 
+ * @param {object} intents
  */
 module.exports = function (intents) {
     return {
@@ -22,15 +22,11 @@ module.exports = function (intents) {
             },
             (session, args) => {
                 if (args.response != undefined) {
-                    cData.Hevigheid = args.response.entity[0];
+                    cData.characteristics.Hevigheid = args.response.entity[0];
                 }
-                builder.Prompts.time(session, "Wanneer is de hoofdpijn begonnen met opkomen?");
+                builder.Prompts.text(session, "Wanneer is de hoofdpijn begonnen met opkomen?");
             },
             (session, args, next) => {
-                if (args.response != undefined) {
-                    cData.startDate = args.response.entity[0];
-                }
-
                 if (!helpers.questionAnswered('Aanwezigheid', cData)) {
                     builder.Prompts.choice(session, "Met welke frequentie komt de hoofdpijn voor?", "Wisselend|Continu", { listStyle: builder.ListStyle.button });
                 } else {
@@ -38,10 +34,6 @@ module.exports = function (intents) {
                 }
             },
             (session, args) => {
-                if (args.response != undefined) {
-                    cData.Aanwezigheid = args.response.entity;
-                }
-
                 session.beginDialog('AdviceDialog', cData);
             }
         ]

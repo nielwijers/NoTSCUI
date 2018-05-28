@@ -20,18 +20,20 @@ module.exports = function (intents) {
                 if (cData.characteristics.Kenmerken == undefined) cData.characteristics.Kenmerken = [];
                 if (cData.askedCharacteristics == undefined) cData.askedCharacteristics = [];
 
-                console.log(possibilities, cData);
                 characteristics = helpers.getCharacteristics(possibilities, cData);
 
-                if (characteristics == null) {
-                    next();
-                }
+                console.log(characteristics);
 
-                let msg = 'Heeft u last van ' + characteristics[0] + '?';
-                builder.Prompts.confirm(session, msg);
+                if (characteristics.length == 0) {
+                    session.send('Volgens mij heeft u last van aanstelleritus.');
+                    session.endConversation();
+                } else {
+                    let msg = 'Heeft u last van ' + characteristics[0] + '?';
+                    builder.Prompts.confirm(session, msg, { listStyle: builder.ListStyle.button });
+                }
             },
             (session, args, next) => {
-                if (args.response != undefined) {
+                if (args.response !== undefined) {
                     if (args.response) {
                         cData.characteristics.Kenmerken.push(characteristics[0]);
                     } else {
@@ -39,15 +41,15 @@ module.exports = function (intents) {
                     }
                 }
 
-                if (characteristics != null && characteristics.length > 1) {
+                if  (characteristics.length !== 0 && characteristics.length >= 2) {
                     let msg = 'Heeft u last van ' + characteristics[1] + '?';
-                    builder.Prompts.confirm(session, msg);
+                    builder.Prompts.confirm(session, msg, { listStyle: builder.ListStyle.button });
                 } else {
                     next();
                 }
             },
             (session, args, next) => {
-                if (args.response != undefined) {
+                if (args.response !== undefined) {
                     if (args.response) {
                         cData.characteristics.Kenmerken.push(characteristics[1]);
                     } else {
@@ -55,7 +57,7 @@ module.exports = function (intents) {
                     }
                 }
 
-                session.beginDialog('ConclusionDialog', cData);
+                session.beginDialog('ConclusionDialog', {conversationData: cData});
             }
         ]
     }

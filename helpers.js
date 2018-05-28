@@ -10,7 +10,7 @@ const conclusions = require('./conclusions.json');
  * Extention method of any Array type.
  * Checks if the array has an index of the given value.
  * @param {*} value
- * @returns {boolean} 
+ * @returns {boolean}
  */
 Array.prototype.has = function(value) {
     return this.indexOf(value) >= 0;
@@ -19,8 +19,8 @@ Array.prototype.has = function(value) {
 /**
  * Uses the recognizer to check if questions are answered.
  * Saves the anwered questions to a file in the /ConversationData folder.
- * @param {object} session 
- * @param {object} intents 
+ * @param {object} session
+ * @param {object} intents
  * @param {function} cb
  */
 let answerQuestionsWithEntities = (session, intents, cb) => {
@@ -43,9 +43,9 @@ let answerQuestionsWithEntities = (session, intents, cb) => {
 /**
  * Saves the given object to a new file. If the files already
  * excists, merge it in the excisting file.
- * @param {object} session 
- * @param {object} conversationData 
- * @param {function} cb 
+ * @param {object} session
+ * @param {object} conversationData
+ * @param {function} cb
  */
 let saveConversationData = (session, conversationData, cb) => {
     fs.readdir('./ConversationData', (error, files) => {
@@ -83,7 +83,7 @@ let saveConversationData = (session, conversationData, cb) => {
 
 /**
  * Returns the data object read from the user specific file.
- * @param {object} session 
+ * @param {object} session
  * @returns {object}
  */
 let getConversationData = (session) => {
@@ -103,8 +103,8 @@ let getConversationData = (session) => {
 
 /**
  * Checks if the given entity of the user is already known.
- * @param {object} entity 
- * @param {object} cData 
+ * @param {object} entity
+ * @param {object} cData
  * @returns {boolean}
  */
 let questionAnswered = (entity, cData) => {
@@ -124,14 +124,14 @@ let getAdvice = type => {
 
 /**
  * Gives back 2 characteristics from the given possible conclusions.
- * @param {array} possibilities 
- * @param {object} cData 
- * @param {integer} index 
+ * @param {array} possibilities
+ * @param {object} cData
+ * @param {integer} index
  * @returns {array}
  */
 let getCharacteristics = (possibilities, cData, index = 0) => {
     if (index >= possibilities.length - 1) {
-        return null;
+        return [];
     }
     let characteristics = conclusions[possibilities[index].name].Kenmerken.slice();
     let indexesToRemove = [];
@@ -146,8 +146,8 @@ let getCharacteristics = (possibilities, cData, index = 0) => {
         }
     }
 
-    if (characteristics.length < 1) {
-        getCharacteristics(possibilities, cData, index + 1);
+    if (characteristics.length <= 0) {
+        return getCharacteristics(possibilities, cData, index + 1);
     }
 
     return characteristics;
@@ -156,7 +156,7 @@ let getCharacteristics = (possibilities, cData, index = 0) => {
 /**
  * Checks if the conclusion type has a variable intensity.
  * @param {string} type
- * @returns {boolean} 
+ * @returns {boolean}
  */
 let hasVariableIntensity = type => {
     return Object.keys(getAdvice(type)).length > 1;
@@ -164,7 +164,7 @@ let hasVariableIntensity = type => {
 
 /**
  * Gets all sorted possibilities by most corresponding with the symptoms.
- * @param {object} cData 
+ * @param {object} cData
  * @returns {object}
  */
 let getConslusion = cData => {
@@ -195,6 +195,7 @@ let getConslusion = cData => {
     data = {
         possibilities: possibilities,
         final: possibilities[0].score - possibilities[1].score > 2,
+        variableIntensity: hasVariableIntensity(possibilities[0].name)
     }
 
     return data;
@@ -202,7 +203,7 @@ let getConslusion = cData => {
 
 /**
  * Delete the corresponding user file.
- * @param {object} session 
+ * @param {object} session
  * @param {function} cb
  */
 let deleteUserData = (session, cb) => {
