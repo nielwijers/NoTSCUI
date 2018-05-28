@@ -3,6 +3,10 @@ const helpers = require('../helpers');
 
 let cData;
 
+/**
+ * Checks ith the user if the symptoms are intens or not.
+ * @param {object} intents 
+ */
 module.exports = function (intents) {
     return {
         name: "IntensityDialog",
@@ -11,7 +15,7 @@ module.exports = function (intents) {
                 cData = args;
 
                 if (!helpers.questionAnswered('Hevigheid', cData)) {
-                    builder.Prompts.choice(session, "Hoe intens is de hoofdpijn?", "1: Mild|2: Aanwezig|3: Heftig|4: Intens", { listStyle: builder.ListStyle.button });
+                    builder.Prompts.choice(session, "Hoe intens neemt u de hoofdpijn waar?", "1: Mild|2: Aanwezig|3: Heftig|4: Intens", { listStyle: builder.ListStyle.button });
                 } else {
                     next();
                 }
@@ -20,14 +24,15 @@ module.exports = function (intents) {
                 if (args.response != undefined) {
                     cData.Hevigheid = args.response.entity[0];
                 }
-
-                // Waarom wordt deze vraag eigenlijk gesteld? Dit heeft geen toegevoegde waarde...
-                builder.Prompts.time(session, "Wanneer is de hoofdpijn begonnen?");
+                builder.Prompts.time(session, "Wanneer is de hoofdpijn begonnen met opkomen?");
             },
             (session, args, next) => {
+                if (args.response != undefined) {
+                    cData.startDate = args.response.entity[0];
+                }
 
                 if (!helpers.questionAnswered('Aanwezigheid', cData)) {
-                    builder.Prompts.choice(session, "Met welke frequentie komt de hoofdpijn naar boven?", "Wisselend|Continu", { listStyle: builder.ListStyle.button });
+                    builder.Prompts.choice(session, "Met welke frequentie komt de hoofdpijn voor?", "Wisselend|Continu", { listStyle: builder.ListStyle.button });
                 } else {
                     next();
                 }

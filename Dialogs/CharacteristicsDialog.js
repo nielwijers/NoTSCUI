@@ -4,6 +4,10 @@ const helpers = require('../helpers');
 let data;
 let characteristics;
 
+/**
+ * Will ask if the user recognizes the given symptom.
+ * @param {object} intents 
+ */
 module.exports = function (intents) {
     return {
         name: "CharacteristicsDialog",

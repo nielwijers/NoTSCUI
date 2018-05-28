@@ -1,14 +1,31 @@
+/**
+ * All bot standalone functions are implemented here.
+ */
+
 const fs = require('fs');
 const builder = require('botbuilder');
 const conclusions = require('./conclusions.json');
 
+/**
+ * Extention method of any Array type.
+ * Checks if the array has an index of the given value.
+ * @param {*} value
+ * @returns {boolean} 
+ */
 Array.prototype.has = function(value) {
     return this.indexOf(value) >= 0;
 };
 
+/**
+ * Uses the recognizer to check if questions are answered.
+ * Saves the anwered questions to a file in the /ConversationData folder.
+ * @param {object} session 
+ * @param {object} intents 
+ * @param {function} cb
+ */
 let answerQuestionsWithEntities = (session, intents, cb) => {
     intents.recognize(session, (error, entities) => {
-        if (error) return null;
+        if (error) cb({});
         else {
             let characteristics = {}
 
@@ -17,12 +34,19 @@ let answerQuestionsWithEntities = (session, intents, cb) => {
                     characteristics[entities.entities[i].type] = entities.entities[i].entity;
                 }
             }
-            console.log(characteristics);
+
             saveConversationData(session, {characteristics: characteristics}, cb);
         }
     });
 }
 
+/**
+ * Saves the given object to a new file. If the files already
+ * excists, merge it in the excisting file.
+ * @param {object} session 
+ * @param {object} conversationData 
+ * @param {function} cb 
+ */
 let saveConversationData = (session, conversationData, cb) => {
     fs.readdir('./ConversationData', (error, files) => {
         let cData = conversationData;
@@ -57,6 +81,11 @@ let saveConversationData = (session, conversationData, cb) => {
     });
 }
 
+/**
+ * Returns the data object read from the user specific file.
+ * @param {object} session 
+ * @returns {object}
+ */
 let getConversationData = (session) => {
     let files = fs.readdirSync('./ConversationData', 'utf8');
     if (files != undefined && session.message.address.conversation.id+'.json' in files) {
@@ -72,16 +101,34 @@ let getConversationData = (session) => {
     return null;
 }
 
+/**
+ * Checks if the given entity of the user is already known.
+ * @param {object} entity 
+ * @param {object} cData 
+ * @returns {boolean}
+ */
 let questionAnswered = (entity, cData) => {
     return Object.keys(cData.characteristics).has(entity)
         && cData.characteristics[entity] != null
         && cData.characteristics[entity] != '';
 }
 
+/**
+ * Gets the advice from given type.
+ * @param {string} type
+ * @returns {string}
+ */
 let getAdvice = type => {
     return conclusions[type].Advies;
 }
 
+/**
+ * Gives back 2 characteristics from the given possible conclusions.
+ * @param {object} possibilities 
+ * @param {object} cData 
+ * @param {integer} index 
+ * @returns {array}
+ */
 let getCharacteristics = (possibilities, cData, index = 0) => {
     if (index >= possibilities.length - 1) {
         return null;
@@ -106,14 +153,22 @@ let getCharacteristics = (possibilities, cData, index = 0) => {
     return characteristics;
 }
 
+/**
+ * Checks if the conclusion type has a variable intensity.
+ * @param {string} type
+ * @returns {boolean} 
+ */
 let hasVariableIntensity = type => {
     return Object.keys(getAdvice(type)).length > 1;
 }
 
+/**
+ * Gets all sorted possibilities by most corresponding with the symptoms.
+ * @param {object} cData 
+ * @returns {object}
+ */
 let getConslusion = cData => {
     possibilities = [];
-
-    console.log(cData);
 
     for (let c = 0; c < Object.keys(conclusions).length -1; c++) {
         possibilities[c] = {name: Object.keys(conclusions)[c], score: 0}
@@ -142,11 +197,29 @@ let getConslusion = cData => {
         final: possibilities[0].score - possibilities[1].score > 2,
     }
 
-    console.log(data);
-
     return data;
 }
 
+/**
+ * Delete the corresponding user file.
+ * @param {object} session 
+ * @param {function} cb
+ */
+let deleteUserData = (session, cb) => {
+    fs.readdir('./ConversationData', (error, files) => {
+        if (files != undefined && session.message.address.conversation.id+'.json' in files) {
+            fs.unlink('./ConversationData/'+session.message.address.conversation.id+'.json', error => {
+                if (error) console.log(e);
+                cb();
+            });
+        }
+        else cb();
+    });
+}
+
+/**
+ * Exposes helpers.
+ */
 module.exports = {
     answerQuestionsWithEntities,
     hasVariableIntensity,
@@ -156,4 +229,5 @@ module.exports = {
     questionAnswered,
     getConslusion,
     getAdvice,
+    deleteUserData,
 }

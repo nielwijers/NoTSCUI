@@ -1,3 +1,7 @@
+/**
+ * The Api is contructed and initialized here.
+ */
+
 const NO_BOT_ERROR = 'Please provide name of the bot you want to start. (npm start *botname*)';
 const UNKNOWN_BOT_ERROR = 'Bot not found.';
 const BOTNAME = process.argv[2];

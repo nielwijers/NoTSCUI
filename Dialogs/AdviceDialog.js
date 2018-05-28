@@ -3,6 +3,10 @@ const helpers = require('../helpers');
 
 let cData;
 
+/**
+ * Gives advice of the conclusion to the user.
+ * @param {object} intents 
+ */
 module.exports = function (intents) {
     return {
         name: "AdviceDialog",
@@ -24,8 +28,21 @@ module.exports = function (intents) {
                     advice = advice.Matig;
                 }
 
-                session.send('Het lijkt erop dat u ' + conclusion.possibilities[0].name + ' heeft. \n Het advies hiervoor is: \n ' + advice);
-                session.send('Mijn werk zit er weer op, fijne dag verder!');
+                session.send('Het lijkt erop dat u last heeft van ' + conclusion.possibilities[0].name + '. \n Mijn advies hiervoor is: \n ' + advice);
+                builder.Prompts.confirm(session, "Wilt u opnieuw beginnen?", { listStyle: builder.ListStyle.button });
+            },
+            (session, args) => {
+                if (args.response == undefined, !args.response) {
+                    session.send('Tot ziens!');
+                    helpers.deleteUserData(session, () => {
+                        session.endConversation();
+                    });
+                }
+                else {
+                    helpers.deleteUserData(session, () => {
+                        session.beginDialog('initialDialog');
+                    });
+                }
             }
         ]
     }
