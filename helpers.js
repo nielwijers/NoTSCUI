@@ -124,7 +124,7 @@ let getAdvice = type => {
 
 /**
  * Gives back 2 characteristics from the given possible conclusions.
- * @param {object} possibilities 
+ * @param {array} possibilities 
  * @param {object} cData 
  * @param {integer} index 
  * @returns {array}

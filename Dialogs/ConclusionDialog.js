@@ -14,10 +14,9 @@ module.exports = function (intents) {
         name: "ConclusionDialog",
         steps: [
             (session, args) => {
-                cData = args.cData;
                 if (args.posIndex) possibilitiesIndex = posIndex;
 
-                let conclusion = helpers.getConslusion(cData);
+                let conclusion = helpers.getConslusion(args.conversationData);
 
                 if (conclusion.final) {
                     if (conclusion.variableIntensity) {
@@ -27,7 +26,7 @@ module.exports = function (intents) {
                         session.beginDialog('AdviceDialog');
                     }
                 } else {
-                    session.beginDialog('CharacteristicsDialog', conclusion);
+                    session.beginDialog('CharacteristicsDialog', {conclusion, cData: args.conversationData});
                 }
             }
         ]

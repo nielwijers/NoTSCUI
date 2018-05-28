@@ -1,7 +1,8 @@
 const builder = require('botbuilder');
 const helpers = require('../helpers');
 
-let data;
+let cData;
+let possibilities;
 let characteristics;
 
 /**
@@ -13,12 +14,14 @@ module.exports = function (intents) {
         name: "CharacteristicsDialog",
         steps: [
             (session, args, next) => {
-                data = args;
+                cData = args.cData;
+                possibilities = args.conclusion.possibilities;
 
-                if (data.cData.characteristics.Kenmerken == undefined) data.cData.characteristics.Kenmerken = [];
-                if (data.cData.askedCharacteristics == undefined) data.cData.askedCharacteristics = [];
+                if (cData.characteristics.Kenmerken == undefined) cData.characteristics.Kenmerken = [];
+                if (cData.askedCharacteristics == undefined) cData.askedCharacteristics = [];
 
-                characteristics = helpers.getCharacteristics(data.possibilities, data.cData);
+                console.log(possibilities, cData);
+                characteristics = helpers.getCharacteristics(possibilities, cData);
 
                 if (characteristics == null) {
                     next();
@@ -30,9 +33,9 @@ module.exports = function (intents) {
             (session, args, next) => {
                 if (args.response != undefined) {
                     if (args.response) {
-                        data.cData.characteristics.Kenmerken.push(characteristics[0]);
+                        cData.characteristics.Kenmerken.push(characteristics[0]);
                     } else {
-                        data.cData.askedCharacteristics.push(characteristics[0]);
+                        cData.askedCharacteristics.push(characteristics[0]);
                     }
                 }
 
@@ -46,13 +49,13 @@ module.exports = function (intents) {
             (session, args, next) => {
                 if (args.response != undefined) {
                     if (args.response) {
-                        data.cData.characteristics.Kenmerken.push(characteristics[1]);
+                        cData.characteristics.Kenmerken.push(characteristics[1]);
                     } else {
-                        data.cData.askedCharacteristics.push(characteristics[1]);
+                        cData.askedCharacteristics.push(characteristics[1]);
                     }
                 }
 
-                session.beginDialog('ConclusionDialog', data.cData);
+                session.beginDialog('ConclusionDialog', cData);
             }
         ]
     }

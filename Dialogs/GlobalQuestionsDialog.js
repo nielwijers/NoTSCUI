@@ -61,7 +61,7 @@ module.exports = function (intents) {
                 }
 
                 helpers.saveConversationData(session, cData, (conversationData) => {
-                    session.beginDialog('ConclusionDialog', conversationData);
+                    session.beginDialog('ConclusionDialog', {conversationData});
                 });
             },
             (session, args) => {
