@@ -10,7 +10,7 @@ module.exports = function (intents) {
         name: "initialDialog",
         steps: [
             (session, args) => {
-                builder.Prompts.text(session, 'Kunt u de hoofdpijn beschrijven?');
+                builder.Prompts.text(session, 'Kunt u de klachten beschrijven?');
             },
             (session, args, next) => {
                 helpers.answerQuestionsWithEntities(session, intents, converationData =>

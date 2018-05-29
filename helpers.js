@@ -218,6 +218,18 @@ let deleteUserData = (session, cb) => {
     });
 }
 
+let getGlobalQuestionSteps = intents => {
+    let steps = 
+    [
+        (session, args, next) => {
+            cData = args;
+            session.send('Ik zal een aantal vragen stellen om een goede conclusie te kunnen geven. U kunt gebruik maken van de knoppen.');
+        }
+    ]
+
+    
+}
+
 /**
  * Exposes helpers.
  */
