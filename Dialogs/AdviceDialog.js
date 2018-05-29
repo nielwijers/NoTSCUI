@@ -13,9 +13,8 @@ module.exports = function (intents) {
         steps: [
             (session, args) => {
                 cData = args;
-
-                let conclusion = helpers.getConslusion(cData);
-                let advice = helpers.getAdvice(conclusion.possibilities[0].name);
+                let conclusion = helpers.getConclusion(cData);
+                let advice = helpers.getAdvice(cData.characteristics.type, conclusion.possibilities[0].name);
 
                 if (helpers.questionAnswered('Hevigheid', cData)) {
                     let hevigheid = cData.characteristics.Hevigheid;

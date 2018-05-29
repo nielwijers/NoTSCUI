@@ -14,7 +14,7 @@ module.exports = function (intents) {
             (session, args) => {
                 cData = args.conversationData;
 
-                let conclusion = helpers.getConslusion(cData);
+                let conclusion = helpers.getConclusion(cData);
 
                 if (conclusion.final) {
                     if (conclusion.variableIntensity) {

@@ -25,17 +25,22 @@ Array.prototype.has = function(value) {
  */
 let answerQuestionsWithEntities = (session, intents, cb) => {
     intents.recognize(session, (error, entities) => {
-        if (error) cb({});
+        if (error) cb({error});
         else {
-            let characteristics = {}
+            if (entities.intent !== 'Default Fallback Intent') {
+                let characteristics = {type: entities.intent}
 
-            for (let i = 0; i < entities.entities.length; i++) {
-                if (conclusions.entities.has(entities.entities[i].type)) {
-                    characteristics[entities.entities[i].type] = entities.entities[i].entity;
+                for (let i = 0; i < entities.entities.length; i++) {
+                    if (conclusions[entities.intent].entities.has(entities.entities[i].type)) {
+                        characteristics[entities.entities[i].type] = entities.entities[i].entity;
+                    }
                 }
+    
+                saveConversationData(session, {characteristics: characteristics}, cb);
             }
-
-            saveConversationData(session, {characteristics: characteristics}, cb);
+            else {
+                cb({error: 'IntentUnkown'})
+            }
         }
     });
 }
@@ -118,8 +123,8 @@ let questionAnswered = (entity, cData) => {
  * @param {string} type
  * @returns {string}
  */
-let getAdvice = type => {
-    return conclusions[type].Advies;
+let getAdvice = (intent, type) => {
+    return conclusions[intent].types[type].Advies;
 }
 
 /**
@@ -133,7 +138,8 @@ let getCharacteristics = (possibilities, cData, index = 0) => {
     if (index >= possibilities.length - 1) {
         return [];
     }
-    let characteristics = conclusions[possibilities[index].name].Kenmerken.slice();
+
+    let characteristics = conclusions[cData.characteristics.type].types[possibilities[index].name].Kenmerken.slice();
     let indexesToRemove = [];
     if (cData.characteristics.Kenmerken != undefined) {
         for (let i = 0; i < characteristics.length; i++) {
@@ -158,8 +164,8 @@ let getCharacteristics = (possibilities, cData, index = 0) => {
  * @param {string} type
  * @returns {boolean}
  */
-let hasVariableIntensity = type => {
-    return Object.keys(getAdvice(type)).length > 1;
+let hasVariableIntensity = (intent, type) => {
+    return Object.keys(getAdvice(intent, type)).length > 1;
 }
 
 /**
@@ -167,24 +173,26 @@ let hasVariableIntensity = type => {
  * @param {object} cData
  * @returns {object}
  */
-let getConslusion = cData => {
+let getConclusion = cData => {
     possibilities = [];
+    let possibleConclusions = conclusions[cData.characteristics.type].types;
 
-    for (let c = 0; c < Object.keys(conclusions).length -1; c++) {
-        possibilities[c] = {name: Object.keys(conclusions)[c], score: 0}
+    for (let c = 0; c < Object.keys(possibleConclusions).length -1; c++) {
+        possibilities[c] = {name: Object.keys(possibleConclusions)[c], score: 0}
         for (let s = 0; s < Object.keys(cData.characteristics).length; s++) {
             let sKey = Object.keys(cData.characteristics)[s];
-
-            if (cData.characteristics[sKey].constructor === Array) {
-                let characteristicsArray = cData.characteristics[sKey];
-                for (let a = 0; a < characteristicsArray.length; a++) {
-                    if (conclusions[possibilities[c].name][sKey].has(characteristicsArray[a])) {
+            if (sKey != 'type') {
+                if (cData.characteristics[sKey].constructor === Array) {
+                    let characteristicsArray = cData.characteristics[sKey];
+                    for (let a = 0; a < characteristicsArray.length; a++) {
+                        if (possibleConclusions[possibilities[c].name][sKey].has(characteristicsArray[a])) {
+                            possibilities[c].score += 1;
+                        }
+                    }
+                } else {
+                    if (cData.characteristics[sKey] != null && possibleConclusions[possibilities[c].name][sKey].has(cData.characteristics[sKey])) {
                         possibilities[c].score += 1;
                     }
-                }
-            } else {
-                if (cData.characteristics[sKey] != null && conclusions[possibilities[c].name][sKey].has(cData.characteristics[sKey])) {
-                    possibilities[c].score += 1;
                 }
             }
         }
@@ -195,7 +203,7 @@ let getConslusion = cData => {
     data = {
         possibilities: possibilities,
         final: possibilities[0].score - possibilities[1].score > 2,
-        variableIntensity: hasVariableIntensity(possibilities[0].name)
+        variableIntensity: hasVariableIntensity(cData.characteristics.type, possibilities[0].name)
     }
 
     return data;
@@ -218,16 +226,8 @@ let deleteUserData = (session, cb) => {
     });
 }
 
-let getGlobalQuestionSteps = intents => {
-    let steps = 
-    [
-        (session, args, next) => {
-            cData = args;
-            session.send('Ik zal een aantal vragen stellen om een goede conclusie te kunnen geven. U kunt gebruik maken van de knoppen.');
-        }
-    ]
-
-    
+let getGlobalQuestions = type => {
+    return conclusions[type].characteristics.global;
 }
 
 /**
@@ -240,7 +240,8 @@ module.exports = {
     getConversationData,
     getCharacteristics,
     questionAnswered,
-    getConslusion,
+    getConclusion,
     getAdvice,
     deleteUserData,
+    getGlobalQuestions,
 }
