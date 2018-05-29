@@ -1,165 +1,196 @@
 {
-    "Type": "Hoofdpijn",
-    "Soort": {
-        "Spanningshoofdpijn": {
-            "Geslacht": [
-                "Man",
-                "Vrouw"
-            ],
-            "PijnZijde": [
-                "Beide"
-            ],
-            "PijnPunt": [
-                "Slaap",
-                "Voorhoofd"
-            ],
-            "PijnSoort": [
-                "Drukkend",
-                "Dof"
-            ],
-            "Hevigheid": [
-                1,
-                2
-            ],
-            "Aanwezigheid": [
-                "Wisselend"
-            ],
-            "Kenmerken": [
-                "pijnlijke, stijve en gespannen nek",
-                "pijnlijke, stijve en gespannen schouders",
-                "misselijkheid bij toenemende hoofdpijn (niet overgeven)",
-                "depressiviteit als gevolg"
-            ],
-            "Advies": {
-                "Matig": "Ontspannen( Goed slapen, regelmatig strekoefeningen, massage), Paracetamol, Ibuprofen"
+    "Hoofdpijn": {
+        "types": {
+            "Spanningshoofdpijn": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnZijde": [
+                    "Beide"
+                ],
+                "PijnPunt": [
+                    "Slaap",
+                    "Voorhoofd"
+                ],
+                "PijnSoort": [
+                    "Drukkend",
+                    "Dof"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "pijnlijke, stijve en gespannen nek",
+                    "pijnlijke, stijve en gespannen schouders",
+                    "misselijkheid bij toenemende hoofdpijn (niet overgeven)",
+                    "depressiviteit als gevolg"
+                ],
+                "Advies": {
+                    "Matig": "Ontspannen( Goed slapen, regelmatig strekoefeningen, massage), Paracetamol, Ibuprofen"
+                }
+            },
+            "Clusterhoofdpijn": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnZijde": [
+                    "Links",
+                    "Rechts"
+                ],
+                "PijnPunt": [
+                    "Slaap",
+                    "Voorhoofd",
+                    "Achter het oog"
+                ],
+                "PijnSoort": [
+                    "Snijdend",
+                    "Bonzend"
+                ],
+                "Hevigheid": [
+                    3,
+                    4
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "rood doorlopen oog aan de zijde waar de hoofdpijn zit",
+                    "tranend oog aan de zijde waar de hoofdpijn zit",
+                    "hangend of gezwollen ooglid aan de zijde waar de hoofdpijn zit",
+                    "vernauwde pupil aan de zijde waar de hoofdpijn zit",
+                    "loopneus aan de zijde waar de hoofdpijn zit",
+                    "zweten op het voorhoofd",
+                    "depressiviteit als gevolg"
+                ],
+                "Advies": {
+                    "Ernstig": "Neem contact op met de huisarts"
+                }
+            },
+            "Migraine": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnZijde": [
+                    "Links",
+                    "Rechts"
+                ],
+                "PijnPunt": [
+                    "Slaap",
+                    "Voorhoofd",
+                    "Achter het oog",
+                    "Achter in het hoofd"
+                ],
+                "PijnSoort": [
+                    "Kloppend",
+                    "Bonzend"
+                ],
+                "Hevigheid": [
+                    3,
+                    4
+                ],
+                "Aanwezigheid": [
+                    "Continu"
+                ],
+                "Kenmerken": [
+                    "misselijkheid en/of braken",
+                    "overgevoelig voor licht en/of geluid",
+                    "tijdens een aanval wordt de pijn erger bij lichamelijke inspanning",
+                    "het zien van lichtflitsen,vlekken of sterretjes",
+                    "gevoel van krachtverlies"
+                ],
+                "Advies": {
+                    "Matig": "Pijnstillers, Middel tegen misselijkheid, op donkere en rustige plekken uitrusten",
+                    "Ernstig": "Neem contact met de huisarts"
+                }
+            },
+            "Hormonale hoofdpijn": {
+                "Geslacht": [
+                    "Vrouw"
+                ],
+                "PijnZijde": [
+                    "Beide"
+                ],
+                "PijnPunt": [
+                    "Slaap",
+                    "Voorhoofd",
+                    "Achter het oog",
+                    "Achter in het hoofd"
+                ],
+                "PijnSoort": [
+                    "Drukkend",
+                    "Zeurend"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "acné",
+                    "depressiviteit",
+                    "dwangmatig eten",
+                    "duizelingen",
+                    "gespannenheid, irritatie",
+                    "gewichtstoename",
+                    "gezwollen en/of pijnlijke borsten",
+                    "huiduitslag (vlekjes)",
+                    "kramp in de buik",
+                    "opgeblazen buik",
+                    "pijn in de rug",
+                    "vermoeidheid",
+                    "wisselende stemmingen"
+                ],
+                "Advies": {
+                    "Matig": "Pijnstillers die in de groep NSAID’s vallen"
+                }
             }
         },
-        "Clusterhoofdpijn": {
-            "Geslacht": [
-                "Man",
-                "Vrouw"
+        "characteristics": {
+            "global": [
+                {
+                    "name": "Geslacht",
+                    "question": "Wat is uw geslacht?",
+                    "answers": "Man|Vrouw"
+                },
+                {
+                    "name": "PijnZijde",
+                    "question": "Aan welke zijde heeft u hoofdpijn?",
+                    "answers": "Links|Rechts|Beide"
+                },
+                {
+                    "name": "PijnPunt",
+                    "question": "Op welk punt voelt u de pijn het meest?",
+                    "answers": "Slaap|Voorhoofd|Achter het oog|Achter in het hoofd"
+                },
+                {
+                    "name": "PijnSoort",
+                    "question": "Welk van de volgende pijnsoorten komt het meeste overeen met uw hoofdpijn?",
+                    "answers": "Drukkend|Dof|Snijdend|Bonzend|Kloppend|Zeurend"
+                }
             ],
-            "PijnZijde": [
-                "Links",
-                "Rechts"
-            ],
-            "PijnPunt": [
-                "Slaap",
-                "Voorhoofd",
-                "Achter het oog"
-            ],
-            "PijnSoort": [
-                "Snijdend",
-                "Bonzend"
-            ],
-            "Hevigheid": [
-                3,
-                4
-            ],
-            "Aanwezigheid": [
-                "Wisselend"
-            ],
-            "Kenmerken": [
-                "rood doorlopen oog aan de zijde waar de hoofdpijn zit",
-                "tranend oog aan de zijde waar de hoofdpijn zit",
-                "hangend of gezwollen ooglid aan de zijde waar de hoofdpijn zit",
-                "vernauwde pupil aan de zijde waar de hoofdpijn zit",
-                "loopneus aan de zijde waar de hoofdpijn zit",
-                "zweten op het voorhoofd",
-                "depressiviteit als gevolg"
-            ],
-            "Advies": {
-                "Ernstig": "Neem contact op met de huisarts"
-            }
-        },
-        "Migraine": {
-            "Geslacht": [
-                "Man",
-                "Vrouw"
-            ],
-            "PijnZijde": [
-                "Links",
-                "Rechts"
-            ],
-            "PijnPunt": [
-                "Slaap",
-                "Voorhoofd",
-                "Achter het oog",
-                "Achter in het hoofd"
-            ],
-            "PijnSoort": [
-                "Kloppend",
-                "Bonzend"
-            ],
-            "Hevigheid": [
-                3,
-                4
-            ],
-            "Aanwezigheid": [
-                "Continu"
-            ],
-            "Kenmerken": [
-                "misselijkheid en/of braken",
-                "overgevoelig voor licht en/of geluid",
-                "tijdens een aanval wordt de pijn erger bij lichamelijke inspanning",
-                "het zien van lichtflitsen,vlekken of sterretjes",
-                "gevoel van krachtverlies"
-            ],
-            "Advies": {
-                "Matig": "Pijnstillers, Middel tegen misselijkheid, op donkere en rustige plekken uitrusten",
-                "Ernstig": "Neem contact met de huisarts"
-            }
-        },
-        "Hormonale hoofdpijn": {
-            "Geslacht": [
-                "Vrouw"
-            ],
-            "PijnZijde": [
-                "Beide"
-            ],
-            "PijnPunt": [
-                "Slaap",
-                "Voorhoofd",
-                "Achter het oog",
-                "Achter in het hoofd"
-            ],
-            "PijnSoort": [
-                "Drukkend",
-                "Zeurend"
-            ],
-            "Hevigheid": [
-                1,
-                2
-            ],
-            "Aanwezigheid": [
-                "Wisselend"
-            ],
-            "Kenmerken": [
-                "acné",
-                "depressiviteit",
-                "dwangmatig eten",
-                "duizelingen",
-                "gespannenheid, irritatie",
-                "gewichtstoename",
-                "gezwollen en/of pijnlijke borsten",
-                "huiduitslag (vlekjes)",
-                "kramp in de buik",
-                "opgeblazen buik",
-                "pijn in de rug",
-                "vermoeidheid",
-                "wisselende stemmingen"
-            ],
-            "Advies": {
-                "Matig": "Pijnstillers die in de groep NSAID’s vallen"
-            }
+            "intensity": [
+                {
+                    "name": "Hevigheid",
+                    "question": "Hoe intens neemt u de hoofdpijn waar?",
+                    "answers": "1: Mild|2: Aanwezig|3: Heftig|4: Intens"
+                },
+                {
+                    "name": "Aanwezigheid",
+                    "question": "Met welke frequentie komt de hoofdpijn voor?",
+                    "answers": "Wisselend|Continu"
+                }
+                "Hevigheid",
+                "Aanwezigheid"
+            ]
         }
-    },
-    "entities": [
-        "Geslacht",
-        "PijnZijde",
-        "pijnPunt",
-        "PijnSoort",
-        "Hevigheid",
-        "Aanwezigheid"
-    ]
+    }
 }
