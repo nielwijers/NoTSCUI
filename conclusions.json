@@ -69,7 +69,7 @@
                     "depressiviteit als gevolg"
                 ],
                 "Advies": {
-                    "Ernstig": "Neem contact op met de huisarts"
+                    "Matig": "Neem contact op met de huisarts"
                 }
             },
             "Migraine": {
@@ -181,7 +181,7 @@
                 {
                     "name": "Hevigheid",
                     "question": "Hoe intens neemt u de hoofdpijn waar?",
-                    "answers": "1: Mild|2: Aanwezig|3: Heftig|4: Intens"
+                    "answers": "1|2|3|4"
                 },
                 {
                     "name": "Aanwezigheid",

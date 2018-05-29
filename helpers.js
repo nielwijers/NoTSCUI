@@ -35,7 +35,7 @@ let answerQuestionsWithEntities = (session, intents, cb) => {
                         characteristics[entities.entities[i].type] = entities.entities[i].entity;
                     }
                 }
-    
+
                 saveConversationData(session, {characteristics: characteristics}, cb);
             }
             else {
@@ -230,18 +230,24 @@ let getGlobalQuestions = type => {
     return conclusions[type].characteristics.global;
 }
 
+let getIntensityQuestions = type => {
+    return conclusions[type].characteristics.intensity;
+}
+
+
 /**
  * Exposes helpers.
  */
 module.exports = {
     answerQuestionsWithEntities,
+    getIntensityQuestions,
     hasVariableIntensity,
     saveConversationData,
     getConversationData,
+    getGlobalQuestions,
     getCharacteristics,
     questionAnswered,
+    deleteUserData,
     getConclusion,
     getAdvice,
-    deleteUserData,
-    getGlobalQuestions,
 }

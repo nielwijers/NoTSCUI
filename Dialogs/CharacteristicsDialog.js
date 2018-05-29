@@ -22,8 +22,6 @@ module.exports = function (intents) {
 
                 characteristics = helpers.getCharacteristics(possibilities, cData);
 
-                console.log(characteristics);
-
                 if (characteristics.length == 0) {
                     session.send('Volgens mij heeft u last van aanstelleritus.');
                     session.endConversation();

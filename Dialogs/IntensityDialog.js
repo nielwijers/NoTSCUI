@@ -1,6 +1,8 @@
 const builder = require('botbuilder');
 const helpers = require('../helpers');
 
+let questions;
+let index;
 let cData;
 
 /**
@@ -12,29 +14,43 @@ module.exports = function (intents) {
         name: "IntensityDialog",
         steps: [
             (session, args, next) => {
-                cData = args;
+                if (args.index == undefined || args.index == 0) {
+                    let cData = args;
+                    let questions = helpers.getIntensityQuestions(cData.characteristics.type);
+                    let index = 0;
 
-                if (!helpers.questionAnswered('Hevigheid', cData)) {
-                    builder.Prompts.choice(session, "Hoe intens neemt u de hoofdpijn waar?", "1: Mild|2: Aanwezig|3: Heftig|4: Intens", { listStyle: builder.ListStyle.button });
+                    next({cData, questions, index});
                 } else {
-                    next();
+                    next(args);
                 }
-            },
-            (session, args) => {
-                if (args.response != undefined) {
-                    cData.characteristics.Hevigheid = args.response.entity[0];
-                }
-                builder.Prompts.text(session, "Wanneer is de hoofdpijn begonnen met opkomen?");
             },
             (session, args, next) => {
-                if (!helpers.questionAnswered('Aanwezigheid', cData)) {
-                    builder.Prompts.choice(session, "Met welke frequentie komt de hoofdpijn voor?", "Wisselend|Continu", { listStyle: builder.ListStyle.button });
-                } else {
-                    next();
+                questions = args.questions;
+                index = args.index;
+                cData = args.cData;
+
+                if (!helpers.questionAnswered(questions[index].name, args.cData)) {
+                    builder.Prompts.choice(session, questions[index].question, questions[index].answers, { listStyle: builder.ListStyle.button });
                 }
             },
-            (session, args) => {
-                session.beginDialog('AdviceDialog', cData);
+            (session, args, next) => {
+                if (args.response != undefined) {
+                    cData.characteristics[questions[index].name] = args.response.entity;
+                }
+
+                index++;
+
+                args = {
+                    index,
+                    questions,
+                    cData
+                }
+
+                if (index >= questions.length) {
+                    session.beginDialog('AdviceDialog', cData);
+                } else {
+                    session.beginDialog('IntensityDialog', args);
+                }
             }
         ]
     }
