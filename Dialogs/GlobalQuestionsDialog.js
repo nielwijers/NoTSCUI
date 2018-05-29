@@ -19,7 +19,7 @@ module.exports = function (intents) {
                     let questions = helpers.getGlobalQuestions(cData.characteristics.type);
                     let index = 0;
 
-                    session.send('Ik zal een aantal vragen stellen om een goede conclusie te kunnen geven. U kunt gebruik maken van de knoppen.');
+                    session.send('Ik zal een aantal vragen stellen om een conclusie te trekken en gericht advies te kunnen geven. U kunt gebruik maken van de knoppen.');
 
                     next({cData, questions, index});
                 } else {

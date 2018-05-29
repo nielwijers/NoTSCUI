@@ -198,5 +198,342 @@
             "Hevigheid",
             "Aanwezigheid"
         ]
+    },
+    "Buikpijn": {
+        "types": {
+            "Voedselvergiftiging": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Rond de navel",
+                    "Linksonder",
+                    "Rechtsonder",
+                    "Linksboven",
+                    "Rechtsboven",
+                    "Bovenbuik",
+                    "Onderbuik"
+                ],
+                "PijnSoort": [
+                    "Krampen"
+                ],
+                "Hevigheid": [
+                    3,
+                    4
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "krampende pijn",
+                    "diarree",
+                    "misselijkheid en/of braken",
+                    "koorts en koude rillingen",
+                    "uitdroging"
+                ],
+                "Advies": {
+                    "Matig": "Drink veel water. Als na 4 dagen de symptomen nog niet verdwenen zijn: Neem contact op met uw huisarts."
+                }
+            },
+            "Buikgriep": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Rond de navel",
+                    "Linksonder",
+                    "Rechtsonder",
+                    "Linksboven",
+                    "Rechtsboven",
+                    "Bovenbuik",
+                    "Onderbuik"
+                ],
+                "PijnSoort": [
+                    "Krampen"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "diarree",
+                    "misselijkheid",
+                    "koorts",
+                    "overgeven",
+                    "hoofdpijn",
+                    "uitdroging"
+                ],
+                "Advies": {
+                    "Matig": "Drink vaak kleine hoeveelheden (water, thee, bouillon). Was uw handen goed na toiletgebruik."
+                }
+            },
+            "Blindedarmontsteking": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Rond de navel",
+                    "Rechtsonder",
+                    "Rechtsboven"
+                ],
+                "PijnSoort": [
+                    "Zeurend"
+                ],
+                "Hevigheid": [
+                    4
+                ],
+                "Aanwezigheid": [
+                    "Continu"
+                ],
+                "Kenmerken": [
+                    "pijn bij het plassen",
+                    "overgeven voordat de buikpijn begint",
+                    "scherpe of doffe pijn in het rectum, de rug, de maag of de buik",
+                    "pijn bij het aanraken en loslaten van de buik"
+                ],
+                "Advies": {
+                    "Matig": "Neem zo snel mogelijk contact op met uw huisarts."
+                }
+            },
+            "Maagzweer": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Bovenbuik"
+                ],
+                "PijnSoort": [
+                    "Brandend"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "boeren",
+                    "misselijkheid",
+                    "soms overgeven, braken",
+                    "een opgezette of opgeblazen buik"
+                ],
+                "Advies": {
+                    "Matig": "Neem maagzuurremmers. Vermijdt granen, noten en grote, vette maaltijden. Eet langzaam gedurende dag kleine porties bouillion en salades."
+                }
+            },
+            "Blaasontsteking": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Onderbuik"
+                ],
+                "PijnSoort": [
+                    "Stekend"
+                ],
+                "Hevigheid": [
+                    2,
+                    3
+                ],
+                "Aanwezigheid": [
+                    "Tijdens het plassen"
+                ],
+                "Kenmerken": [
+                    "pijn bij het plassen",
+                    "regelmatige drang voor kleine plasjes",
+                    "pijn in uw rug of onderbuik"
+                ],
+                "Advies": {
+                    "Matig": "Drink elke dag 1,5 tot 2 liter water. De klachten kunnen mogelijk vanzelf overgaan. Als de klachten na een week nog steeds aanwezig zijn kunt u uw ochtendurine laten nakijken bij uw huisarts.",
+                    "Ernstig": "Drink elke dag 1,5 tot 2 liter water. Laat uw ochtendurine nakijken bij uw huisarts."
+                }
+            },
+            "Menstruatiebuikpijn": {
+                "Geslacht": [
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Onderbuik"
+                ],
+                "PijnSoort": [
+                    "Krampen"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "misselijkheid",
+                    "overgeven",
+                    "diarree",
+                    "verstopping van de darmen",
+                    "vaak moeten plassen",
+                    "een opgezette buik",
+                    "veel zweten",
+                    "hoofdpijn",
+                    "prikkelbaarheid voorafgaand aan de menstruatie",
+                    "nervositeit",
+                    "depressie"
+                ],
+                "Advies": {
+                    "Matig": "Leg een warme kruik op uw buik en ontspan. Neem een warm bad. Neem een pijnstiller. Een eventuele mogelijkheid is het nemen van de anticonceptiepil, dit kan de buikpijn verminderen."
+                }
+            }
+        },
+        "characteristics": {
+            "global": [
+                {
+                    "name": "Geslacht",
+                    "question": "Wat is uw geslacht?",
+                    "answers": "Man|Vrouw"
+                },
+                {
+                    "name": "PijnPunt",
+                    "question": "Op welk punt voelt u de pijn het meest?",
+                    "answers": "Rond de navel|Bovenbuik|Onderbuik|Rechtsboven|Linksboven|Rechtsonder|Linksonder"
+                },
+                {
+                    "name": "PijnSoort",
+                    "question": "Welk van de volgende pijnsoorten komt het meeste overeen met uw buikpijn?",
+                    "answers": "Krampen|Stekend|Brandend|Zeurend"
+                }
+            ],
+            "intensity": [
+                {
+                    "name": "Hevigheid",
+                    "question": "Hoe intens neemt u de buikpijn waar?",
+                    "answers": "1|2|3|4"
+                },
+                {
+                    "name": "Aanwezigheid",
+                    "question": "Met welke frequentie komt de buikpijn voor?",
+                    "answers": "Wisselend|Continu|Tijdens het plassen"
+                }
+            ]
+        },
+        "entities": [
+            "PijnPunt",
+            "PijnSoort",
+            "Hevigheid",
+            "Aanwezigheid",
+            "Geslacht"
+        ]
+    },
+    "Keelpijn": {
+        "types": {
+            "Keelpijn": {
+                "PijnPunt": [
+                    "Gehele keel"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Continu"
+                ],
+                "Kenmerken": [
+                    "een branderig gevoel in de keel",
+                    "een droge keel",
+                    "oorpijn",
+                    "een geïrriteerde keel",
+                    "gevoelige klieren",
+                    "pijn bij het slikken",
+                    "moeite met praten",
+                    "opgezwollen keelamandelen en/of keelslijmvlies",
+                    "taai slijm in de keel",
+                    "verkoudheid",
+                    "zwelling in de keel"
+                ],
+                "Advies": {
+                    "Matig": "Maak gebruik van keelspray of keeltabletten. Wanneer de keelpijn langdurig aanhoudt (langer dan 7 dagen) is het goed om contact op te nemen met uw huisarts."
+                }
+            },
+            "Keelontsteking": {
+                "PijnPunt": [
+                    "Gehele keel"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Continu"
+                ],
+                "Kenmerken": [
+                    "de behoefte om de keel te schrapen",
+                    "een branderig gevoel in de keel",
+                    "gevoelige en opgezette lymfeklieren in de hals",
+                    "veel dorst",
+                    "een hese of schorre stem",
+                    "veel hoesten",
+                    "hoofdpijn",
+                    "keelslijmvlies en keelamandelen zijn rood en opgezwollen"
+                ],
+                "Advies": {
+                    "Matig": "Maak gebruik van keelspray of keeltabletten. Drink regelmatig koud water, dit kan de pijn verzachten. Op een dropje of zuurtje zuigen kan de pijn ook verzachten."
+                }
+            },
+            "Keelamandelontsteking": {
+                "PijnPunt": [
+                    "Bovenaan de keel"
+                ],
+                "Hevigheid": [
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Continu"
+                ],
+                "Kenmerken": [
+                    "koorts",
+                    "opgezette en/of gevoelige lymfeklieren",
+                    "pijn bij het slikken",
+                    "een prikkelend gevoel achterin de keel",
+                    "oorpijn",
+                    "slechte adem"
+                ],
+                "Advies": {
+                    "Matig": "Maak gebruik van keelspray of keeltabletten. Als u vermoedt dat het een amandelontsteking is moet u contact opnemen met de huisarts."
+                }
+            }
+        },
+        "characteristics": {
+            "global": [
+                {
+                    "name": "PijnPunt",
+                    "question": "Op welk punt voelt u de pijn het meest?",
+                    "answers": "Bovenaan de keel|Gehele keel"
+                }
+            ],
+            "intensity": [
+                {
+                    "name": "Hevigheid",
+                    "question": "Hoe intens neemt u de keelpijn waar?",
+                    "answers": "1|2|3|4"
+                },
+                {
+                    "name": "Aanwezigheid",
+                    "question": "Met welke frequentie komt de buikpijn voor?",
+                    "answers": "Wisselend|Continu"
+                }
+            ]
+        },
+        "entities": [
+            "PijnPunt",
+            "Hevigheid",
+            "Aanwezigheid"
+        ]
     }
 }

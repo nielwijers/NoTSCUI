@@ -26,7 +26,7 @@ class Bot {
             recognizers: [new apiairecognizer("54ae2c103dcd42b5b65c4d4cd120ed25")]
         });
     }
-    
+
     getConnector() {
         return this.connector
     }
@@ -53,7 +53,7 @@ class Bot {
                      if (identity.id === message.address.bot.id) {
                         let intents = this.intents;
                         this.bot.set(`persistData`, false);
-                        this.bot.send(new builder.Message().address(message.address).text('Hallo, als u last heeft van hoofdpijn kan ik u helpen bij het anayleren van de hoofdpijn en daarbij advies geven.'));
+                        this.bot.send(new builder.Message().address(message.address).text('Hallo, als u ergens last van heeft kan ik u helpen bij het anaysleren van de pijn en daarbij advies geven.'));
                         this.bot.beginDialog(message.address, 'initialDialog', intents);
                         this.bot.beginDialogAction('StopAction', 'StopDialog', { matches: /^stop$/i });
                         this.bot.beginDialogAction('HelpAction', 'HelpDialog', { matches: /^help$/i });
