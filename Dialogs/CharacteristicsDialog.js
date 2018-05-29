@@ -24,7 +24,9 @@ module.exports = function (intents) {
 
                 if (characteristics.length == 0) {
                     session.send('Volgens mij heeft u last van aanstelleritus.');
-                    session.endConversation();
+                    helpers.deleteUserData(session, () => {
+                        session.beginDialog('initialDialog');
+                    });
                 } else {
                     let msg = 'Heeft u last van ' + characteristics[0] + '?';
                     builder.Prompts.confirm(session, msg, { listStyle: builder.ListStyle.button });

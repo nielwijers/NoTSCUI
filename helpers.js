@@ -177,7 +177,7 @@ let getConclusion = cData => {
     possibilities = [];
     let possibleConclusions = conclusions[cData.characteristics.type].types;
 
-    for (let c = 0; c < Object.keys(possibleConclusions).length -1; c++) {
+    for (let c = 0; c < Object.keys(possibleConclusions).length; c++) {
         possibilities[c] = {name: Object.keys(possibleConclusions)[c], score: 0}
         for (let s = 0; s < Object.keys(cData.characteristics).length; s++) {
             let sKey = Object.keys(cData.characteristics)[s];
@@ -205,6 +205,8 @@ let getConclusion = cData => {
         final: possibilities[0].score - possibilities[1].score > 2,
         variableIntensity: hasVariableIntensity(cData.characteristics.type, possibilities[0].name)
     }
+
+    console.log(data);
 
     return data;
 }
