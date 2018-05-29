@@ -188,9 +188,15 @@
                     "question": "Met welke frequentie komt de hoofdpijn voor?",
                     "answers": "Wisselend|Continu"
                 }
-                "Hevigheid",
-                "Aanwezigheid"
             ]
-        }
+        },
+        "entities": [
+            "Geslacht",
+            "PijnZijde",
+            "PijnPunt",
+            "PijnSoort",
+            "Hevigheid",
+            "Aanwezigheid"
+        ]
     }
 }
