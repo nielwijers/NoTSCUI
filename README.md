@@ -92,12 +92,13 @@ module.exports = {
 ## Installatie
 
 1. Clone of download de repository van [Github](https://github.com/nielwijers/NoTSCUI.git).
-2. Installeer de Node packages door het volgende commando in uw terminal uit te voeren:
+2. Navigeer binnen de Commandline of Terminal naar de project map.
+2. Installeer de Node packages door het volgende commando in uw Commandline of Terminal uit te voeren:
 ```
 npm install
 ```
 3. Download en installeer de [Microsoft Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
-4. Om de bot te starten moet het volgende commando worden uitgevoerd:
+4. Om de bot te starten moet het volgende commando worden uitgevoerd in uw Commandline of Terminal:
 ```
 npm start diagnoseBot
 ```
