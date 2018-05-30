@@ -18,7 +18,7 @@ module.exports = function (intents) {
                 possibilities = args.conclusion.possibilities;
 
                 if (cData.characteristics.Kenmerken == undefined) cData.characteristics.Kenmerken = [];
-                if (cData.askedCharacteristics == undefined) cData.askedCharacteristics = [];
+                if (cData.NietAanwezigeKenmerken == undefined) cData.NietAanwezigeKenmerken = [];
 
                 characteristics = helpers.getCharacteristics(possibilities, cData);
 
@@ -37,27 +37,31 @@ module.exports = function (intents) {
                     if (args.response) {
                         cData.characteristics.Kenmerken.push(characteristics[0]);
                     } else {
-                        cData.askedCharacteristics.push(characteristics[0]);
+                        cData.NietAanwezigeKenmerken.push(characteristics[0]);
                     }
                 }
 
-                if  (characteristics.length !== 0 && characteristics.length >= 2) {
-                    let msg = 'Heeft u last van ' + characteristics[1] + '?';
-                    builder.Prompts.confirm(session, msg, { listStyle: builder.ListStyle.button });
-                } else {
-                    next();
-                }
+                helpers.saveConversationData(session, cData, () => {
+                    if  (characteristics.length !== 0 && characteristics.length >= 2) {
+                        let msg = 'Heeft u last van ' + characteristics[1] + '?';
+                        builder.Prompts.confirm(session, msg, { listStyle: builder.ListStyle.button });
+                    } else {
+                        next();
+                    }
+                });
             },
             (session, args, next) => {
                 if (args.response !== undefined) {
                     if (args.response) {
                         cData.characteristics.Kenmerken.push(characteristics[1]);
                     } else {
-                        cData.askedCharacteristics.push(characteristics[1]);
+                        cData.NietAanwezigeKenmerken.push(characteristics[1]);
                     }
                 }
 
-                session.beginDialog('ConclusionDialog', {conversationData: cData});
+                helpers.saveConversationData(session, cData, () => {
+                    session.beginDialog('ConclusionDialog', {conversationData: cData});
+                });
             }
         ]
     }

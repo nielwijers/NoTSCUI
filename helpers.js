@@ -59,13 +59,13 @@ let saveConversationData = (session, conversationData, cb) => {
             fs.readFile('./ConversationData/'+session.message.address.conversation.id+'.json', (error, content) => {
                 try {
                     let data = JSON.parse(content);
-                    let cData = Object.assign(data, converationData)
+                    let merged = Object.assign({}, data, converationData);
                     fs.writeFile('./ConversationData/'+session.message.address.conversation.id+'.json',
-                    JSON.stringify(merged), 'utf8', (error) => {
+                    JSON.stringify(merged, null, 4), 'utf8', (error) => {
                         if (error) {
                             console.log(error);
                         }
-                        cb(cData);
+                        cb(merged);
                     })
                 }
                 catch(e) {
@@ -76,7 +76,7 @@ let saveConversationData = (session, conversationData, cb) => {
         }
         else {
             fs.writeFile('./ConversationData/'+session.message.address.conversation.id+'.json',
-                JSON.stringify(conversationData), 'utf8', (error) => {
+                JSON.stringify(conversationData, null, 4), 'utf8', (error) => {
                 if (error) {
                     console.log(error);
                 }
@@ -143,7 +143,7 @@ let getCharacteristics = (possibilities, cData, index = 0) => {
     let indexesToRemove = [];
     if (cData.characteristics.Kenmerken != undefined) {
         for (let i = 0; i < characteristics.length; i++) {
-            if (cData.characteristics.Kenmerken.has(characteristics[i]) || cData.askedCharacteristics.has(characteristics[i])) {
+            if (cData.characteristics.Kenmerken.has(characteristics[i]) || cData.NietAanwezigeKenmerken.has(characteristics[i])) {
                 indexesToRemove.push(i);
             }
         }
@@ -205,8 +205,6 @@ let getConclusion = cData => {
         final: possibilities[0].score - possibilities[1].score > 2,
         variableIntensity: hasVariableIntensity(cData.characteristics.type, possibilities[0].name)
     }
-
-    console.log(data);
 
     return data;
 }

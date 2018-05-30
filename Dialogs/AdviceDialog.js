@@ -27,8 +27,14 @@ module.exports = function (intents) {
                     advice = advice.Matig;
                 }
 
-                session.send('Het lijkt erop dat u last heeft van ' + conclusion.possibilities[0].name + '. \n Mijn advies hiervoor is: \n ' + advice);
-                builder.Prompts.confirm(session, "Wilt u opnieuw beginnen?", { listStyle: builder.ListStyle.button });
+                cData.conclusion = { type: "", advice: ""};
+                cData.conclusion.type = conclusion.possibilities[0].name;
+                cData.conclusion.advice = advice;
+
+                helpers.saveConversationData(session, cData, () => {
+                    session.send('Het lijkt erop dat u last heeft van ' + conclusion.possibilities[0].name.toLowerCase() + '. \n Mijn advies hiervoor is: \n ' + advice);
+                    builder.Prompts.confirm(session, "Wilt u opnieuw beginnen?", { listStyle: builder.ListStyle.button });
+                });
             },
             (session, args) => {
                 if (args.response == undefined, !args.response) {
