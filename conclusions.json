@@ -28,7 +28,7 @@
                     "pijnlijke, stijve en gespannen nek",
                     "pijnlijke, stijve en gespannen schouders",
                     "misselijkheid bij toenemende hoofdpijn (niet overgeven)",
-                    "depressiviteit als gevolg"
+                    "depressiviteit"
                 ],
                 "Advies": {
                     "Matig": "Ontspannen( Goed slapen, regelmatig strekoefeningen, massage), Paracetamol, Ibuprofen"
@@ -106,8 +106,8 @@
                     "gevoel van krachtverlies"
                 ],
                 "Advies": {
-                    "Matig": "Pijnstillers, Middel tegen misselijkheid, op donkere en rustige plekken uitrusten",
-                    "Ernstig": "Neem contact met de huisarts"
+                    "Matig": "Pijnstillers, Middel tegen misselijkheid, op donkere en rustige plekken uitrusten. ",
+                    "Ernstig": "Neem contact op met uw huisarts."
                 }
             },
             "Hormonale hoofdpijn": {
@@ -136,7 +136,7 @@
                 ],
                 "Kenmerken": [
                     "acné",
-                    "depressiviteit",
+                    "depressie",
                     "dwangmatig eten",
                     "duizelingen",
                     "gespannenheid, irritatie",
@@ -227,10 +227,10 @@
                 ],
                 "Kenmerken": [
                     "krampende pijn",
-                    "diarree",
+                    "veel diarree",
                     "misselijkheid en/of braken",
                     "koorts en koude rillingen",
-                    "uitdroging"
+                    "veel uitdroging"
                 ],
                 "Advies": {
                     "Matig": "Drink veel water. Als na 4 dagen de symptomen nog niet verdwenen zijn: Neem contact op met uw huisarts."
@@ -262,7 +262,7 @@
                 ],
                 "Kenmerken": [
                     "diarree",
-                    "misselijkheid",
+                    "misselijk zijn",
                     "koorts",
                     "overgeven",
                     "hoofdpijn",
@@ -348,7 +348,7 @@
                     "Tijdens het plassen"
                 ],
                 "Kenmerken": [
-                    "pijn bij het plassen",
+                    "pijn tijdens het plassen",
                     "regelmatige drang voor kleine plasjes",
                     "pijn in uw rug of onderbuik"
                 ],
@@ -375,14 +375,14 @@
                     "Wisselend"
                 ],
                 "Kenmerken": [
-                    "misselijkheid",
-                    "overgeven",
-                    "diarree",
+                    "veel misselijkheid",
+                    "braken",
+                    "dunne poep",
                     "verstopping van de darmen",
                     "vaak moeten plassen",
                     "een opgezette buik",
                     "veel zweten",
-                    "hoofdpijn",
+                    "pijn aan het hoofd",
                     "prikkelbaarheid voorafgaand aan de menstruatie",
                     "nervositeit",
                     "depressie"
@@ -433,7 +433,7 @@
     },
     "Keelpijn": {
         "types": {
-            "Keelpijn": {
+            "Reguliere keelpijn": {
                 "PijnPunt": [
                     "Gehele keel"
                 ],
@@ -474,7 +474,7 @@
                 ],
                 "Kenmerken": [
                     "de behoefte om de keel te schrapen",
-                    "een branderig gevoel in de keel",
+                    "een branderige keel",
                     "gevoelige en opgezette lymfeklieren in de hals",
                     "veel dorst",
                     "een hese of schorre stem",
@@ -501,8 +501,8 @@
                     "opgezette en/of gevoelige lymfeklieren",
                     "pijn bij het slikken",
                     "een prikkelend gevoel achterin de keel",
-                    "oorpijn",
-                    "slechte adem"
+                    "pijn aan het oor",
+                    "een slechte adem"
                 ],
                 "Advies": {
                     "Matig": "Maak gebruik van keelspray of keeltabletten. Als u vermoedt dat het een amandelontsteking is moet u contact opnemen met de huisarts."

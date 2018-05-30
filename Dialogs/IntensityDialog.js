@@ -38,19 +38,21 @@ module.exports = function (intents) {
                     cData.characteristics[questions[index].name] = args.response.entity;
                 }
 
-                index++;
+                helpers.saveConversationData(session, cData, () => {
+                    index++;
 
-                args = {
-                    index,
-                    questions,
-                    cData
-                }
+                    args = {
+                        index,
+                        questions,
+                        cData
+                    }
 
-                if (index >= questions.length) {
-                    session.beginDialog('AdviceDialog', cData);
-                } else {
-                    session.beginDialog('IntensityDialog', args);
-                }
+                    if (index >= questions.length) {
+                        session.beginDialog('AdviceDialog', cData);
+                    } else {
+                        session.beginDialog('IntensityDialog', args);
+                    }
+                });
             }
         ]
     }
