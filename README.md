@@ -19,9 +19,9 @@ Hoe?
 Waarom?
 ## Werking
 ### Conclusies
-De chatbot maakt dynamisch gebruik van een centraal bestand `conclusions.json` waar alle mogelijke conlusies in opgeslagen staan. Dit bestand bestaat uit de type conclusies, conclusies, symptomen, adviezen en entities. Wanneer er een conclusie wordt toegevoegd aan het bestand moet DialogFlow worden aangevult met de informatie die is toegevoegd.
+De chatbot maakt dynamisch gebruik van een centraal bestand `conclusions.json` waar alle mogelijke conlusies in opgeslagen staan. Dit bestand bestaat uit de type conclusies, conclusies, symptomen, adviezen en entities. Wanneer er een conclusie wordt toegevoegd aan het bestand moet DialogFlow worden aangevult met de informatie die is toegevoegd. Eenmaal dit toegevoegd, hoeft er aan de bot verder niks veranderd te worden.
 
-De toegevoegde entities bestaan uit alle symptomen van de types. De characteristics moeten gevult worden met het tweetal set aan objecten: global en intensity. Onder global zullen de vragen en antwoorden gezet worden welke in de standaard vragenset zitten. De intensity array moet gevult worden met de vragen en antwoorden die achter de intensiteit moeten komen van de conclusie. De naam zal exact dezelfde naam bevatten als de entities. Wanneer er meerdere antwoorden worden meegegeven aan een vraag moeten deze met gescheiden worden met een sluisteken (`|`). Bijvoorbeeld:
+De toegevoegde entities bestaan uit alle symptomen van de types die in `conclusions.json` gebruikt worden. De characteristics moeten gevult worden met het tweetal set aan objecten: global en intensity. Onder global zullen de vragen en antwoorden gezet worden welke in de standaard vragenset zitten. De intensity array moet gevult worden met de vragen en antwoorden die achter de intensiteit moeten komen van de conclusie. De naam moet exact hetzijlfde zijn als de naam van de entities. Wanneer er meerdere antwoorden worden meegegeven aan een vraag moeten deze met gescheiden worden met een sluisteken (`|`). Bijvoorbeeld:
 ```json
 {
     "name": "PijnSoort",
@@ -32,20 +32,63 @@ De toegevoegde entities bestaan uit alle symptomen van de types. De characterist
 
 De entities moeten per stuk worden toegevoegd aan de set entities in DialogFlow onder de intent met de naam van de conlusie type. Hieronder een voorbeeld van het type 'Hoofdpijn'.
 ```json
- "entities": [
-    "Geslacht",
-    "PijnZijde",
-    "PijnPunt",
-    "PijnSoort",
-    "Hevigheid",
-    "Aanwezigheid"
-]
+{
+    "entities": [
+        "Geslacht",
+        "PijnZijde",
+        "PijnPunt",
+        "PijnSoort",
+        "Hevigheid",
+        "Aanwezigheid"
+    ]
+}
 ```
+![dialogflow entities](/images/dialogflowEntities.png)
+### Dialogs
+Dialogs worden dynamisch aangemaakt door alle files in de folder `./Dialogs`. Wanneer er een nieuwe dialog is aangemaakt in deze map, zal de dialog geinstantieerd worden bij het starten van de bot. De dialogs moeten echter nog wel apart worden aangeroepen. Elke dialog zal de volgende structuur moeten bevatten:
+```js
+module.exports = function (intents) {
+    return {
+        name: "dialognaam",
+        steps: [
+            (session, args, next) => {
+                // Stap 1.
+            },
+            (session, args, next) => {
+                // Stap 2..
+            },
+            // Etc ...
+        ]
+    }
+}
+```
+### Helper functies
+Alle functionaliteiten wat niet chatbot gerelateerd is, zijn in de `helpers.js` file geplaatst. De helper functies kunnen op de volgende manier gebruikt worden:
+```js
+const helpers = require('../helpers');
+let advice = helpers.getAdvice();
+```
+De helpers file kan worden uitgebreid met functies door een function toe te voegen en onderaan de function mee te geven aan de export:
+```js
+let nieuweFunctieNaam = parameter => {
+    return parameter
+}
 
-
-- Hoe voeg je conclusies toe?
-- Hoe voeg je dialogs toe?
-- Hoe voeg je functies toe?
+module.exports = {
+    answerQuestionsWithEntities,
+    getIntensityQuestions,
+    hasVariableIntensity,
+    saveConversationData,
+    getConversationData,
+    getGlobalQuestions,
+    getCharacteristics,
+    questionAnswered,
+    deleteUserData,
+    getConclusion,
+    getAdvice,
+    // nieuweFunctieNaam,
+}
+```
 ## Installatie
 
 1. Clone of download de repository van [Github](https://github.com/nielwijers/NoTSCUI.git).
@@ -56,7 +99,7 @@ npm install
 3. Download en installeer de [Microsoft Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
 4. Om de bot te starten moet het volgende commando worden uitgevoerd:
 ```
-npm start diagnosebot
+npm start diagnoseBot
 ```
 7. Open de Microsoft Bot Framework Emulator.
 8. Vul de volgende 'Endpoint URL' in: http://localhost:3978/api/messages
