@@ -18,7 +18,7 @@ module.exports = function (intents) {
 
                 if (conclusion.final) {
                     if (conclusion.variableIntensity) {
-                        session.send('Het lijkt erop dat u ' + conclusion.possibilities[0].name + ' heeft. Om tot een gericht advies te kunnen geven zal ik nog een aantal vragen moeten stellen.');
+                        session.send('Het lijkt erop dat u last heeft van ' + conclusion.possibilities[0].name.toLowerCase() + '. Om een gericht advies te kunnen geven zal ik nog een aantal vragen moeten stellen.');
                         session.beginDialog('IntensityDialog', cData);
                     } else {
                         session.beginDialog('AdviceDialog', cData);

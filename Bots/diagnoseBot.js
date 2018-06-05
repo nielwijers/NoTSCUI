@@ -2,7 +2,7 @@ const builder = require('botbuilder');
 const apiairecognizer = require('api-ai-recognizer');
 const fs = require('fs');
 
-const FALLBACK_ANSWER = "Sorry ik heb het niet helemaal begrepen."
+const FALLBACK_ANSWER = "Sorry, ik heb het niet helemaal begrepen."
 
 /* This is the default template to build a chatbot with*/
 class Bot {

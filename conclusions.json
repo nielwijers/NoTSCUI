@@ -525,7 +525,7 @@
                 },
                 {
                     "name": "Aanwezigheid",
-                    "question": "Met welke frequentie komt de buikpijn voor?",
+                    "question": "Met welke frequentie komt de keelpijn voor?",
                     "answers": "Wisselend|Continu"
                 }
             ]

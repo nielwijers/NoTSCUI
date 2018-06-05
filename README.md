@@ -24,9 +24,9 @@ Net als bij het MSBF is gekeken naar een grote hoeveelheid tools voor NLP. Na cr
 Met de eerder genoemde apiairecognizer wordt op één moment een bericht gestuurd naar Dialogflow. Met de intentie van Dialogflow wordt gekozen welke vragen gesteld worden en worden deze vragen overgeslagen indien de entiteit daarvoor al in de zin voorkomt.  
 ## Werking
 ### Conclusies
-De chatbot maakt dynamisch gebruik van een centraal bestand `conclusions.json` waar alle mogelijke conlusies in opgeslagen staan. Dit bestand bestaat uit de type conclusies, conclusies, symptomen, adviezen en entities. Wanneer er een conclusie wordt toegevoegd aan het bestand moet DialogFlow worden aangevult met de informatie die is toegevoegd. Eenmaal dit toegevoegd, hoeft er aan de bot verder niks veranderd te worden.
+De chatbot maakt dynamisch gebruik van een centraal bestand `conclusions.json` waar alle mogelijke conlusies in opgeslagen staan. Dit bestand bestaat uit de type conclusies, conclusies, symptomen, adviezen en entities. Wanneer een conclusie wordt toegevoegd aan het bestand moet DialogFlow worden aangevult met de informatie die is toegevoegd. Eenmaal toegevoegd hoeft aan de bot verder niks veranderd te worden.
 
-De toegevoegde entities bestaan uit alle symptomen van de types die in `conclusions.json` gebruikt worden. De characteristics moeten gevult worden met het tweetal set aan objecten: global en intensity. Onder global zullen de vragen en antwoorden gezet worden welke in de standaard vragenset zitten. De intensity array moet gevult worden met de vragen en antwoorden die achter de intensiteit moeten komen van de conclusie. De naam moet exact hetzijlfde zijn als de naam van de entities. Wanneer er meerdere antwoorden worden meegegeven aan een vraag moeten deze met gescheiden worden met een sluisteken (`|`). Bijvoorbeeld:
+De toegevoegde entities bestaan uit alle symptomen van de types die in `conclusions.json` gebruikt worden. De characteristics moeten gevuld worden met het tweetal set aan objecten: global en intensity. Onder global zullen de vragen en antwoorden gezet worden welke in de standaard vragenset zitten. De intensity array moet gevult worden met de vragen en antwoorden die achter de intensiteit moeten komen van de conclusie. De naam moet exact hetzelfde zijn als de naam van de entities. Wanneer meerdere antwoorden worden meegegeven aan een vraag moeten deze gescheiden worden met een sluisteken (`|`). Bijvoorbeeld:
 ```json
 {
     "name": "PijnSoort",
@@ -35,7 +35,7 @@ De toegevoegde entities bestaan uit alle symptomen van de types die in `conclusi
 }
 ```
 
-De entities moeten per stuk worden toegevoegd aan de set entities in DialogFlow onder de intent met de naam van de conlusie type. Hieronder een voorbeeld van het type 'Hoofdpijn'.
+De entities moeten per stuk worden toegevoegd aan de set entities in DialogFlow, onder de intent met de naam van de conlusie type. Hieronder een voorbeeld van het type 'Hoofdpijn'.
 ```json
 {
     "entities": [
@@ -50,7 +50,7 @@ De entities moeten per stuk worden toegevoegd aan de set entities in DialogFlow 
 ```
 ![dialogflow entities](/images/dialogflowEntities.png)
 ### Dialogs
-Dialogs worden dynamisch aangemaakt door alle files in de folder `./Dialogs`. Wanneer er een nieuwe dialog is aangemaakt in deze map, zal de dialog geinstantieerd worden bij het starten van de bot. De dialogs moeten echter nog wel apart worden aangeroepen. Elke dialog zal de volgende structuur moeten bevatten:
+Dialogs worden dynamisch aangemaakt met alle files in de folder `./Dialogs`. Wanneer een nieuwe dialog is aangemaakt in deze map, zal de dialog geinstantieerd worden bij het starten van de bot. De dialogs moeten echter nog wel apart worden aangeroepen. Elke dialog zal de volgende structuur moeten bevatten:
 ```js
 module.exports = function (intents) {
     return {
@@ -68,7 +68,7 @@ module.exports = function (intents) {
 }
 ```
 ### Helper functies
-Alle functionaliteiten wat niet chatbot gerelateerd is, zijn in de `helpers.js` file geplaatst. De helper functies kunnen op de volgende manier gebruikt worden:
+Alle functionaliteiten die niet chat gerelateerd is, zijn in de `helpers.js` file geplaatst. De helper functies kunnen op de volgende manier gebruikt worden:
 ```js
 const helpers = require('../helpers');
 let advice = helpers.getAdvice();
