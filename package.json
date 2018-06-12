@@ -1,0 +1,26 @@
+{
+  "name": "notscui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nielwijers/NoTSCUI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nielwijers/NoTSCUI/issues"
+  },
+  "homepage": "https://github.com/nielwijers/NoTSCUI#readme",
+  "dependencies": {
+    "api-ai-recognizer": "^1.1.1",
+    "bot-graph-dialog": "^3.14.0",
+    "botbuilder": "^3.14.1",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.1"
+  }
+}

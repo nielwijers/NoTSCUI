@@ -5,6 +5,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+ConversationData/*
+
+!ConversationData/.gitkeep
+
 # Runtime data
 pids
 *.pid

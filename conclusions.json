@@ -1,0 +1,539 @@
+{
+    "Hoofdpijn": {
+        "types": {
+            "Spanningshoofdpijn": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnZijde": [
+                    "Beide"
+                ],
+                "PijnPunt": [
+                    "Slaap",
+                    "Voorhoofd"
+                ],
+                "PijnSoort": [
+                    "Drukkend",
+                    "Dof"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "pijnlijke, stijve en gespannen nek",
+                    "pijnlijke, stijve en gespannen schouders",
+                    "misselijkheid bij toenemende hoofdpijn (niet overgeven)",
+                    "depressiviteit"
+                ],
+                "Advies": {
+                    "Matig": "Ontspannen( Goed slapen, regelmatig strekoefeningen, massage), Paracetamol, Ibuprofen"
+                }
+            },
+            "Clusterhoofdpijn": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnZijde": [
+                    "Links",
+                    "Rechts"
+                ],
+                "PijnPunt": [
+                    "Slaap",
+                    "Voorhoofd",
+                    "Achter het oog"
+                ],
+                "PijnSoort": [
+                    "Snijdend",
+                    "Bonzend"
+                ],
+                "Hevigheid": [
+                    3,
+                    4
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "rood doorlopen oog aan de zijde waar de hoofdpijn zit",
+                    "tranend oog aan de zijde waar de hoofdpijn zit",
+                    "hangend of gezwollen ooglid aan de zijde waar de hoofdpijn zit",
+                    "vernauwde pupil aan de zijde waar de hoofdpijn zit",
+                    "loopneus aan de zijde waar de hoofdpijn zit",
+                    "zweten op het voorhoofd",
+                    "depressiviteit als gevolg"
+                ],
+                "Advies": {
+                    "Matig": "Neem contact op met de huisarts"
+                }
+            },
+            "Migraine": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnZijde": [
+                    "Links",
+                    "Rechts"
+                ],
+                "PijnPunt": [
+                    "Slaap",
+                    "Voorhoofd",
+                    "Achter het oog",
+                    "Achter in het hoofd"
+                ],
+                "PijnSoort": [
+                    "Kloppend",
+                    "Bonzend"
+                ],
+                "Hevigheid": [
+                    3,
+                    4
+                ],
+                "Aanwezigheid": [
+                    "Continu"
+                ],
+                "Kenmerken": [
+                    "misselijkheid en/of braken",
+                    "overgevoelig voor licht en/of geluid",
+                    "tijdens een aanval wordt de pijn erger bij lichamelijke inspanning",
+                    "het zien van lichtflitsen,vlekken of sterretjes",
+                    "gevoel van krachtverlies"
+                ],
+                "Advies": {
+                    "Matig": "Pijnstillers, Middel tegen misselijkheid, op donkere en rustige plekken uitrusten. ",
+                    "Ernstig": "Neem contact op met uw huisarts."
+                }
+            },
+            "Hormonale hoofdpijn": {
+                "Geslacht": [
+                    "Vrouw"
+                ],
+                "PijnZijde": [
+                    "Beide"
+                ],
+                "PijnPunt": [
+                    "Slaap",
+                    "Voorhoofd",
+                    "Achter het oog",
+                    "Achter in het hoofd"
+                ],
+                "PijnSoort": [
+                    "Drukkend",
+                    "Zeurend"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "acné",
+                    "depressie",
+                    "dwangmatig eten",
+                    "duizelingen",
+                    "gespannenheid, irritatie",
+                    "gewichtstoename",
+                    "gezwollen en/of pijnlijke borsten",
+                    "huiduitslag (vlekjes)",
+                    "kramp in de buik",
+                    "opgeblazen buik",
+                    "pijn in de rug",
+                    "vermoeidheid",
+                    "wisselende stemmingen"
+                ],
+                "Advies": {
+                    "Matig": "Pijnstillers die in de groep NSAID’s vallen"
+                }
+            }
+        },
+        "characteristics": {
+            "global": [
+                {
+                    "name": "Geslacht",
+                    "question": "Wat is uw geslacht?",
+                    "answers": "Man|Vrouw"
+                },
+                {
+                    "name": "PijnZijde",
+                    "question": "Aan welke zijde heeft u hoofdpijn?",
+                    "answers": "Links|Rechts|Beide"
+                },
+                {
+                    "name": "PijnPunt",
+                    "question": "Op welk punt voelt u de pijn het meest?",
+                    "answers": "Slaap|Voorhoofd|Achter het oog|Achter in het hoofd"
+                },
+                {
+                    "name": "PijnSoort",
+                    "question": "Welk van de volgende pijnsoorten komt het meeste overeen met uw hoofdpijn?",
+                    "answers": "Drukkend|Dof|Snijdend|Bonzend|Kloppend|Zeurend"
+                }
+            ],
+            "intensity": [
+                {
+                    "name": "Hevigheid",
+                    "question": "Hoe intens neemt u de hoofdpijn waar?",
+                    "answers": "1|2|3|4"
+                },
+                {
+                    "name": "Aanwezigheid",
+                    "question": "Met welke frequentie komt de hoofdpijn voor?",
+                    "answers": "Wisselend|Continu"
+                }
+            ]
+        },
+        "entities": [
+            "Geslacht",
+            "PijnZijde",
+            "PijnPunt",
+            "PijnSoort",
+            "Hevigheid",
+            "Aanwezigheid"
+        ]
+    },
+    "Buikpijn": {
+        "types": {
+            "Voedselvergiftiging": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Rond de navel",
+                    "Linksonder",
+                    "Rechtsonder",
+                    "Linksboven",
+                    "Rechtsboven",
+                    "Bovenbuik",
+                    "Onderbuik"
+                ],
+                "PijnSoort": [
+                    "Krampen"
+                ],
+                "Hevigheid": [
+                    3,
+                    4
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "krampende pijn",
+                    "veel diarree",
+                    "misselijkheid en/of braken",
+                    "koorts en koude rillingen",
+                    "veel uitdroging"
+                ],
+                "Advies": {
+                    "Matig": "Drink veel water. Als na 4 dagen de symptomen nog niet verdwenen zijn: Neem contact op met uw huisarts."
+                }
+            },
+            "Buikgriep": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Rond de navel",
+                    "Linksonder",
+                    "Rechtsonder",
+                    "Linksboven",
+                    "Rechtsboven",
+                    "Bovenbuik",
+                    "Onderbuik"
+                ],
+                "PijnSoort": [
+                    "Krampen"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "diarree",
+                    "misselijk zijn",
+                    "koorts",
+                    "overgeven",
+                    "hoofdpijn",
+                    "uitdroging"
+                ],
+                "Advies": {
+                    "Matig": "Drink vaak kleine hoeveelheden (water, thee, bouillon). Was uw handen goed na toiletgebruik."
+                }
+            },
+            "Blindedarmontsteking": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Rond de navel",
+                    "Rechtsonder",
+                    "Rechtsboven"
+                ],
+                "PijnSoort": [
+                    "Zeurend"
+                ],
+                "Hevigheid": [
+                    4
+                ],
+                "Aanwezigheid": [
+                    "Continu"
+                ],
+                "Kenmerken": [
+                    "pijn bij het plassen",
+                    "overgeven voordat de buikpijn begint",
+                    "scherpe of doffe pijn in het rectum, de rug, de maag of de buik",
+                    "pijn bij het aanraken en loslaten van de buik"
+                ],
+                "Advies": {
+                    "Matig": "Neem zo snel mogelijk contact op met uw huisarts."
+                }
+            },
+            "Maagzweer": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Bovenbuik"
+                ],
+                "PijnSoort": [
+                    "Brandend"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "boeren",
+                    "misselijkheid",
+                    "soms overgeven, braken",
+                    "een opgezette of opgeblazen buik"
+                ],
+                "Advies": {
+                    "Matig": "Neem maagzuurremmers. Vermijdt granen, noten en grote, vette maaltijden. Eet langzaam gedurende dag kleine porties bouillion en salades."
+                }
+            },
+            "Blaasontsteking": {
+                "Geslacht": [
+                    "Man",
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Onderbuik"
+                ],
+                "PijnSoort": [
+                    "Stekend"
+                ],
+                "Hevigheid": [
+                    2,
+                    3
+                ],
+                "Aanwezigheid": [
+                    "Tijdens het plassen"
+                ],
+                "Kenmerken": [
+                    "pijn tijdens het plassen",
+                    "regelmatige drang voor kleine plasjes",
+                    "pijn in uw rug of onderbuik"
+                ],
+                "Advies": {
+                    "Matig": "Drink elke dag 1,5 tot 2 liter water. De klachten kunnen mogelijk vanzelf overgaan. Als de klachten na een week nog steeds aanwezig zijn kunt u uw ochtendurine laten nakijken bij uw huisarts.",
+                    "Ernstig": "Drink elke dag 1,5 tot 2 liter water. Laat uw ochtendurine nakijken bij uw huisarts."
+                }
+            },
+            "Menstruatiebuikpijn": {
+                "Geslacht": [
+                    "Vrouw"
+                ],
+                "PijnPunt": [
+                    "Onderbuik"
+                ],
+                "PijnSoort": [
+                    "Krampen"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Wisselend"
+                ],
+                "Kenmerken": [
+                    "veel misselijkheid",
+                    "braken",
+                    "dunne poep",
+                    "verstopping van de darmen",
+                    "vaak moeten plassen",
+                    "een opgezette buik",
+                    "veel zweten",
+                    "pijn aan het hoofd",
+                    "prikkelbaarheid voorafgaand aan de menstruatie",
+                    "nervositeit",
+                    "depressie"
+                ],
+                "Advies": {
+                    "Matig": "Leg een warme kruik op uw buik en ontspan. Neem een warm bad. Neem een pijnstiller. Een eventuele mogelijkheid is het nemen van de anticonceptiepil, dit kan de buikpijn verminderen."
+                }
+            }
+        },
+        "characteristics": {
+            "global": [
+                {
+                    "name": "Geslacht",
+                    "question": "Wat is uw geslacht?",
+                    "answers": "Man|Vrouw"
+                },
+                {
+                    "name": "PijnPunt",
+                    "question": "Op welk punt voelt u de pijn het meest?",
+                    "answers": "Rond de navel|Bovenbuik|Onderbuik|Rechtsboven|Linksboven|Rechtsonder|Linksonder"
+                },
+                {
+                    "name": "PijnSoort",
+                    "question": "Welk van de volgende pijnsoorten komt het meeste overeen met uw buikpijn?",
+                    "answers": "Krampen|Stekend|Brandend|Zeurend"
+                }
+            ],
+            "intensity": [
+                {
+                    "name": "Hevigheid",
+                    "question": "Hoe intens neemt u de buikpijn waar?",
+                    "answers": "1|2|3|4"
+                },
+                {
+                    "name": "Aanwezigheid",
+                    "question": "Met welke frequentie komt de buikpijn voor?",
+                    "answers": "Wisselend|Continu|Tijdens het plassen"
+                }
+            ]
+        },
+        "entities": [
+            "PijnPunt",
+            "PijnSoort",
+            "Hevigheid",
+            "Aanwezigheid",
+            "Geslacht"
+        ]
+    },
+    "Keelpijn": {
+        "types": {
+            "Reguliere keelpijn": {
+                "PijnPunt": [
+                    "Gehele keel"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Continu"
+                ],
+                "Kenmerken": [
+                    "een branderig gevoel in de keel",
+                    "een droge keel",
+                    "oorpijn",
+                    "een geïrriteerde keel",
+                    "gevoelige klieren",
+                    "pijn bij het slikken",
+                    "moeite met praten",
+                    "opgezwollen keelamandelen en/of keelslijmvlies",
+                    "taai slijm in de keel",
+                    "verkoudheid",
+                    "zwelling in de keel"
+                ],
+                "Advies": {
+                    "Matig": "Maak gebruik van keelspray of keeltabletten. Wanneer de keelpijn langdurig aanhoudt (langer dan 7 dagen) is het goed om contact op te nemen met uw huisarts."
+                }
+            },
+            "Keelontsteking": {
+                "PijnPunt": [
+                    "Gehele keel"
+                ],
+                "Hevigheid": [
+                    1,
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Continu"
+                ],
+                "Kenmerken": [
+                    "de behoefte om de keel te schrapen",
+                    "een branderige keel",
+                    "gevoelige en opgezette lymfeklieren in de hals",
+                    "veel dorst",
+                    "een hese of schorre stem",
+                    "veel hoesten",
+                    "hoofdpijn",
+                    "keelslijmvlies en keelamandelen zijn rood en opgezwollen"
+                ],
+                "Advies": {
+                    "Matig": "Maak gebruik van keelspray of keeltabletten. Drink regelmatig koud water, dit kan de pijn verzachten. Op een dropje of zuurtje zuigen kan de pijn ook verzachten."
+                }
+            },
+            "Keelamandelontsteking": {
+                "PijnPunt": [
+                    "Bovenaan de keel"
+                ],
+                "Hevigheid": [
+                    2
+                ],
+                "Aanwezigheid": [
+                    "Continu"
+                ],
+                "Kenmerken": [
+                    "koorts",
+                    "opgezette en/of gevoelige lymfeklieren",
+                    "pijn bij het slikken",
+                    "een prikkelend gevoel achterin de keel",
+                    "pijn aan het oor",
+                    "een slechte adem"
+                ],
+                "Advies": {
+                    "Matig": "Maak gebruik van keelspray of keeltabletten. Als u vermoedt dat het een amandelontsteking is moet u contact opnemen met de huisarts."
+                }
+            }
+        },
+        "characteristics": {
+            "global": [
+                {
+                    "name": "PijnPunt",
+                    "question": "Op welk punt voelt u de pijn het meest?",
+                    "answers": "Bovenaan de keel|Gehele keel"
+                }
+            ],
+            "intensity": [
+                {
+                    "name": "Hevigheid",
+                    "question": "Hoe intens neemt u de keelpijn waar?",
+                    "answers": "1|2|3|4"
+                },
+                {
+                    "name": "Aanwezigheid",
+                    "question": "Met welke frequentie komt de keelpijn voor?",
+                    "answers": "Wisselend|Continu"
+                }
+            ]
+        },
+        "entities": [
+            "PijnPunt",
+            "Hevigheid",
+            "Aanwezigheid"
+        ]
+    }
+}
