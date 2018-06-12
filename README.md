@@ -1,11 +1,11 @@
 # Clara de chatbot
-Clara is het prototype dat tijdens het NoTS onderzoek naar Conversational User Interfaces is gebouwd. Het prototype laat zien hoe een NLP tool gebruikt kan worden in een chatbot. Ook laat het zien hoe met een decision graph een conversatie gemaakt wordt.
+Clara is het prototype dat tijdens het NotS onderzoek naar Conversational User Interfaces is gebouwd. Het prototype laat zien hoe een NLP tool gebruikt kan worden in een chatbot. Ook laat het zien hoe met een decision graph een conversatie gemaakt wordt.
 
-Deze chatbot is dynamisch opgezet en kan daarom makkelijk uitgebreid worden. Onder het kopje 'Werking' is te zien hoe Clara uitgebreid wordt.
+Deze chatbot is dynamisch opgezet en kan daarom makkelijk uitgebreid worden. Onder het kopje 'Werking' is te zien hoe Clara uitgebreid kan worden.
 ## Bijdrage bij de casus
 Het doel van dit onderzoek is om de mogelijkheden te bepalen waarmee een CUI de ernst van een klacht kan classificeren en daarbij de huisarts kan assisteren.
 
-Dit prototype is gebouwd om online beschikbaar te zijn, waardoor gebruikers ten allen tijde de chatbot kunnen benaderen. Bij het gebruik van de chatbot hebben de gebruikers de mogelijkheid om te vragen naar advies over een bepaalde klacht. De chatbot zal doormiddel van gerichte vragen te stellen een conclusie trekken en daarbij gericht advies geven.
+Dit prototype is gerealiseerd om gebruikers ten all tijde de chatbot te kunnen laten benaderen. Bij het gebruik van de chatbot hebben de gebruikers de mogelijkheid om te vragen naar advies over een bepaalde klacht. De chatbot zal doormiddel van gerichte vragen te stellen een conclusie trekken en daarbij gericht advies geven.
 
 Met het advies van de chatbot kan het aantal bezoekers bij de huisarts verminderen. Gebruikers kunnen sneller thuis blijven wanneer een vertrouwde chatbot vertelt wat de beste manier is om de klachten te verhelpen.
 ## Gebruikte tools
@@ -48,7 +48,7 @@ De entities moeten per stuk worden toegevoegd aan de set entities in DialogFlow,
     ]
 }
 ```
-![dialogflow entities](/images/dialogflowEntities.png)
+![dialogflow entities](/images/dialogflowentities.png)
 ### Dialogs
 Dialogs worden dynamisch aangemaakt met alle files in de folder `./Dialogs`. Wanneer een nieuwe dialog is aangemaakt in deze map, zal de dialog geinstantieerd worden bij het starten van de bot. De dialogs moeten echter nog wel apart worden aangeroepen. Elke dialog zal de volgende structuur moeten bevatten:
 ```js
@@ -68,7 +68,7 @@ module.exports = function (intents) {
 }
 ```
 ### Helper functies
-Alle functionaliteiten die niet chat gerelateerd is, zijn in de `helpers.js` file geplaatst. De helper functies kunnen op de volgende manier gebruikt worden:
+Alle functionaliteiten die niet chat gerelateerd zijn, zijn in de `helpers.js` file geplaatst. De helper functies kunnen op de volgende manier gebruikt worden:
 ```js
 const helpers = require('../helpers');
 let advice = helpers.getAdvice();
